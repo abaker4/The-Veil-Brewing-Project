@@ -23,27 +23,12 @@
             <li class="nav-item">
                 <a class="nav-link" href="/contact">Contact</a>
             </li>
-            @if (Route::has('login'))
-                @if (Auth::check())
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/admin/home') }}">Home</a>
-                    </li>
-                @else
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/login') }}">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/register') }}">Register</a>
-                    </li>
-                @endif
-            @endif
-
         </ul>
     </div>
 </nav>
 
 
-<div class="parallax-logo" style="height: 100vh;background: transparent;">
+<div class="parallax-logo pt-2" style="height: 100vh; background: transparent;">
 
     <div class="container">
 

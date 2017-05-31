@@ -47,7 +47,9 @@ class AdminController extends Controller
     public function createTap()
     {
 
+
         return view('admin.taproom.create');
+
     }
 
 
@@ -58,6 +60,7 @@ class AdminController extends Controller
 
 
         return view('admin.taproom.edit',compact('tap') );
+
     }
 
 
@@ -70,9 +73,14 @@ class AdminController extends Controller
         $data['id'];
 
         $tap = Taproom::find($data['id']);
+
             $tap->title = $data['title'];
+            $tap->type = $data['type'];
+            $tap->ABV = $data['ABV'];
+            $tap->small = $data['small'];
+            $tap->large = $data['large'];
 
-
+            $tap->save();
 
         $this->validate(request(),[
 

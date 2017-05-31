@@ -13,7 +13,7 @@ class CreateTaproomTable extends Migration
      */
     public function up()
     {
-        Schema::create('taproom', function (Blueprint $table) {
+        Schema::create('taprooms', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
             $table->string('title');

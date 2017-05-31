@@ -9,10 +9,58 @@
 
     <hr class="featurette-divider">
     <!-- FOOTER -->
+
+
     <footer>
-        <p class="float-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2017 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-    </footer>
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col col-lg-2">
+                    @if (Route::has('login'))
+                        @if (Auth::check())
+                            <a class="nav-link" href="{{ url('/admin/home') }}">Home</a>
+                        @else
+                            <a class="nav-link" href="{{ url('/login') }}">Login</a>
+                            <a class="nav-link" href="{{ url('/register') }}">Register</a>
+                        @endif
+                    @endif
+                </div>
+                <div class="col-12 col-md-auto">
+                    <a href="https://www.instagram.com/theveilbrewing"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                    <a href="https://twitter.com/theveilbrewing"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+                    <a href="https://www.facebook.com/theveilbrewing"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+
+                </div>
+                <div class="col col-lg-2">
+                    <em>Find Us:</em>
+                    <br/>
+                    info@theveilbrewing.com
+                </div>
+
+            </div>
+        {{--<div class="container">--}}
+            {{--<div class="col-lg-4">--}}
+        {{--<p class="float-right"><a href="#">Back to top</a></p>--}}
+        {{--<p>&copy; 2017 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>--}}
+        {{----}}
+            {{--</div>--}}
+        {{--<div class="col-lg-4">--}}
+            {{--<div--}}
+            {{--</div>--}}
+        {{--</div>--}}
+           {{--<div class="col-lg-4">--}}
+               {{--<div class="row">--}}
+                    {{----}}
+               {{--</div>--}}
+           {{--</div>--}}
+        {{--<div class="col-lg-4">--}}
+            {{--<div class="row">--}}
+                {{--<em>For More Information:</em>--}}
+                {{--<br/>--}}
+                {{--<a href="mailto:info@theveilbrewing.com">info@theveilbrewing.com</a>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+        </div>
+      </footer>
 
     <!-- Bootstrap core JavaScript
        ================================================== -->
