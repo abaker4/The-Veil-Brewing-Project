@@ -7,7 +7,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Add Brew</div>
                     <div class="panel-body">
-                        <form class="form-horizontal" role="form" method="POST" action="/admin/taproom">
+                        <form class="form-horizontal" role="form" method="POST" action="/admin/newtap">
                             {{ csrf_field() }}
 
 

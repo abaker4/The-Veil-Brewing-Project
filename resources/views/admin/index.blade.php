@@ -25,6 +25,8 @@
                     <td>{{$list->large}}</td>
                     <td><a class="btn btn-link" href="/admin/taproom/{{$list->id}}/edit">
                         <button type="button" class="btn btn-primary">Edit</button></a></td>
+                    <td><a class="btn btn-link" href="/admin/taproom/{{$list->id}}/delete">
+                            <button type="button" class="btn btn-danger">X</button></a></td>
                 </tr>
                 </tbody>
 

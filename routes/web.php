@@ -41,12 +41,15 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     // Taproom routes
     Route::post('/taproom', 'AdminController@storeTap')->name('taproom');
 
+    Route::post('/newtap', 'AdminController@newTap');
 
     Route::get('/taproom/create', 'AdminController@createTap');
 
     Route::get('/taproom/{id}', 'AdminController@showTap');
 
     Route::get('/taproom/{id}/edit', 'AdminController@editTap');
+
+    Route::get('/taproom/{id}/delete', 'AdminController@deleteTap');
 
 
 

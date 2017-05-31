@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Taproom;
 
+
 class AdminController extends Controller
 {
     /**
@@ -50,6 +51,7 @@ class AdminController extends Controller
 
         return view('admin.taproom.create');
 
+
     }
 
 
@@ -72,6 +74,8 @@ class AdminController extends Controller
         $data = $request->all();
         $data['id'];
 
+
+
         $tap = Taproom::find($data['id']);
 
             $tap->title = $data['title'];
@@ -81,6 +85,8 @@ class AdminController extends Controller
             $tap->large = $data['large'];
 
             $tap->save();
+
+
 
         $this->validate(request(),[
 
@@ -98,14 +104,32 @@ class AdminController extends Controller
 
 
 
-
         session()->flash('message', 'Your new brew has now been added');
+
+
 
 
         return redirect('/admin/home');
 
     }
 
+        public function newTap()
+        {
+
+
+            return redirect ('admin/home');
+
+        }
+
+
+        public function deleteTap(Request $request)
+        {
+            $id = $request->id;
+            $tap = Taproom::find($id);
+            $tap->delete();
+
+            return redirect ('/admin/home');
+        }
 
 
 
