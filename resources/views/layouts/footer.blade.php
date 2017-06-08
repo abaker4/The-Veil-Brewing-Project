@@ -6,7 +6,7 @@
             <p class="lead"></p>
         </div>
     </div>
-
+</div>
     <hr class="featurette-divider">
     <!-- FOOTER -->
 
@@ -14,7 +14,8 @@
     <footer>
         <div class="container">
             <div class="row justify-content-md-center">
-                <div class="col col-lg-2">
+                <div class="col col-lg-3">
+                    <span class="text-muted">Admin</span>
                     @if (Route::has('login'))
                         @if (Auth::check())
                             <a class="nav-link" href="{{ url('/admin/home') }}">Home</a>
@@ -24,43 +25,41 @@
                         @endif
                     @endif
                 </div>
-                <div class="col-12 col-md-auto">
-                    <a href="https://www.instagram.com/theveilbrewing"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                    <a href="https://twitter.com/theveilbrewing"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
-                    <a href="https://www.facebook.com/theveilbrewing"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+                <div class="col-12 col-lg-3 mx-auto">
+                    <a href="https://www.instagram.com/theveilbrewing"><i class="fa fa-instagram fa-2x" aria-hidden="true" target="_blank"></i></a>
+                    <a href="https://twitter.com/theveilbrewing"><i class="fa fa-twitter-square fa-2x" aria-hidden="true" target="_blank"   ></i></a>
+                    <a href="https://www.facebook.com/theveilbrewing"><i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i></a>
 
                 </div>
-                <div class="col col-lg-2">
-                    <em>Find Us:</em>
+                <div class="col col-lg-3">
+                    <em class="text-muted">Resources</em>
+
+                  <div><a href="/jobs">Jobs</a></div>
+                    <div><a href="https://www.beeradvocate.com/search/?q=the+veil&qt=beer" target="_blank">Beer Advocate</a></div>
+                    <div><a href="https://www.ratebeer.com/brewers/the-veil-brewing-company/26864/" target="_blank">Rate Beer</a></div>
+                    <div><a href="http://goodbeerhunting.com/blog/2016/8/13/a-return-to-the-old-dominion-the-veil-brewing-in-richmond-virginia?rq=the%20veil%20brewing%20co." target="_blank">Good Beer Hunting</a></div>
+                </div>
+
+
+                <div class="col col-lg-3">
+                    <em class="text-muted">Info</em>
                     <br/>
-                    info@theveilbrewing.com
+                    <a href="mailto:info@theveilbrewing.com">info@theveilbrewing.com</a>
+                    <br/>
+                    <em class="text-muted">Events</em>
+                    <br/>
+                    <a href="mailto:events@theveilbrewing.com">events@theveilbrewing.com</a>
+                    <br/>
+                    <div class="pt-2">
+                        <em class="text-muted">Contact</em>
+                        <br/>
+                        <p> 1301 Roseneath Rd. Richmond, VA, 23230 </p>
+                    </div>
                 </div>
-
-            </div>
-        {{--<div class="container">--}}
-            {{--<div class="col-lg-4">--}}
-        {{--<p class="float-right"><a href="#">Back to top</a></p>--}}
-        {{--<p>&copy; 2017 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>--}}
-        {{----}}
-            {{--</div>--}}
-        {{--<div class="col-lg-4">--}}
-            {{--<div--}}
-            {{--</div>--}}
-        {{--</div>--}}
-           {{--<div class="col-lg-4">--}}
-               {{--<div class="row">--}}
-                    {{----}}
-               {{--</div>--}}
-           {{--</div>--}}
-        {{--<div class="col-lg-4">--}}
-            {{--<div class="row">--}}
-                {{--<em>For More Information:</em>--}}
-                {{--<br/>--}}
-                {{--<a href="mailto:info@theveilbrewing.com">info@theveilbrewing.com</a>--}}
-            {{--</div>--}}
-        {{--</div>--}}
+             </div>
         </div>
       </footer>
+
 
     <!-- Bootstrap core JavaScript
        ================================================== -->
@@ -73,14 +72,15 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
 
-    <script src="/js/app.js"></script>
+    {{--<script src="/js/app.js"></script>--}}
     <script src="/js/parallax.js"></script>
+    <script src="/js/main.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <!--<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>-->
 
     <script>
         $(function(){
-            $('.parallax-window').parallax({imageSrc: '/img/veil/taproom.jpeg'});
+            $('.parallax-taproom').parallax({imageSrc: '/img/veil/taproom.jpeg'});
         });
 
 
@@ -109,6 +109,18 @@
         $(function(){
             $('.parallax-comarea').parallax({imageSrc: '/img/veil/comarea.jpeg'});
         });
+        $(function(){
+            $('.parallax-exterior').parallax({imageSrc: '/img/veil/exterior1.jpeg'});
+        });
+        $(function(){
+            $('.parallax-extsign').parallax({imageSrc: '/img/veil/extsign.jpeg'});
+        });
+
+        $(function(){
+            $('.parallax-cans').parallax({imageSrc: '/img/veil/cans.jpeg'});
+        });
+
+        $('#flash-message').fadeOut(5000);
 
     </script>
 

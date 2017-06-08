@@ -5,22 +5,19 @@
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="#">[ The Veil ]</a>
+    <a id="home" class="navbar-brand" href="/">[ The Veil ]</a>
     <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="/">Info <span class="sr-only">(current)</span></a>
+        <ul class="nav-bar nav" >
+            <li id="taproom" class="nav-item">
+                <a  class="nav-link" href="/taproom" >Taproom</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href={{url ("/taproom") }}>Taproom</a>
+            <li id="store"class="nav-item">
+                <a  class="nav-link" href="/store"  >Store</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/store">Store</a>
+            <li id="events"class="nav-item">
+                <a  class="nav-link"  href="/events">Events</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/events">Events</a>
-            </li>
-            <li class="nav-item">
+            <li id="contact" class="nav-item">
                 <a class="nav-link" href="/contact">Contact</a>
             </li>
         </ul>
@@ -28,11 +25,3 @@
 </nav>
 
 
-<div class="parallax-logo pt-2" style="height: 100vh; background: transparent;">
-
-    <div class="container">
-
-        <h1 class="display-1"></h1>
-        <p class="lead"></p>
-    </div>
-</div>

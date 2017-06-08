@@ -38,9 +38,23 @@ class User extends Authenticatable
     }
 
 
+
+    public function events()
+    {
+        return $this->hasMany(Events::class);
+
+    }
+
     public function taproom()
     {
         return $this->hasMany(Taproom::class);
 
+    }
+
+
+    public function jobs()
+    {
+
+        return $this->hasMany(Jobs::class);
     }
 }

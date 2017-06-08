@@ -11,24 +11,20 @@
 |
 */
 
-Route::get('/', function () {
-    return view('public.welcome');
-});
+Route::get('/', 'PublicController@index');
 
-Route::get('/store', function () {
-    return view('public.store');
-});
+Route::get('/store', 'PublicController@store');
 
-Route::get('/contact', function () {
-    return view('public.contact');
-});
+Route::get('/contact', 'PublicController@contact');
 
-Route::get('/events', function(){
+Route::post('/contact', 'PublicController@newContact');
 
-   return view('public.events');
-});
+Route::get('/events', 'PublicController@events');
 
-Route::get('/taproom', 'TaproomController@index');
+Route::get('/taproom', 'PublicController@taproom');
+
+Route::get('/jobs', 'PublicController@jobs');
+
 
 Auth::routes();
 
@@ -49,19 +45,44 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 
     Route::get('/taproom/{id}/edit', 'AdminController@editTap');
 
-    Route::get('/taproom/{id}/delete', 'AdminController@deleteTap');
+    Route::get('/taproom/{id}/delete', 'AdminController@destroyTap');
 
 
+
+    // Jobs routes
+    Route::get('/jobs/create', 'AdminController@createJob');
+
+    Route::post('/jobs', 'AdminController@storeJob')->name('jobs');
+
+    Route::post('/newjob', 'AdminController@newJob');
+
+    Route::get('/jobs/{id}', 'AdminController@showJob');
+
+    Route::get('/jobs/{id}/edit', 'AdminController@editJob');
+
+    Route::get('/jobs/{id}/delete', 'AdminController@destroyJob');
 
 
 
 
     // Event routes
-    Route::get('/events', 'AdminController@events')->name('events');
+
+    Route::post('/events', 'AdminController@storeEvent')->name('events');
+
+    Route::get('/events/create', 'AdminController@createEvent');
+
+    Route::post('/newevent', 'AdminController@newEvent');
+
+    Route::get('/events/{id}', 'AdminController@showEvent');
+
+    Route::get('/events/{id}/edit', 'AdminController@editEvent');
+
+    Route::get('/events/{id}/delete', 'AdminController@destroyEvent');
 
 
-    // Jobs routes
-    Route::get('/jobs', 'AdminController@jobs')->name('jobs');
+    //Contacts routes
+
+
 
 });
 

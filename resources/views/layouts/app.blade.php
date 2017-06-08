@@ -42,9 +42,7 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="{{ route('taproom') }}">Tap List</a></li>
-                        <li><a href="{{ route('events') }}">Events</a></li>
-                        <li><a href="{{ route('jobs') }}">Jobs</a></li>
+
 
                         <!-- Authentication Links -->
                         @if (Auth::guest())
