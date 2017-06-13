@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers;
 
+
+
 use Illuminate\Http\Request;
-use App\Contacts;
+use App\Contact;
 use App\Taproom;
 use App\Events;
 use App\Jobs;
+use App\Mail\Welcome;
+use App\Mail\WelcomeAgain;
+
+
 class PublicController extends Controller
 {
     /**
@@ -36,24 +42,12 @@ class PublicController extends Controller
         return view('public.contact');
     }
 
-    public function newContact()
+    public function newContact(Request $request)
 
     {
 
-        //create a new job using the request data
-        $contact = new Contacts;
-
-        $contact->first = request('first');
-        $contact->last = request('last');
-        $contact->email = request('email');
-        $contact->subject= request('subject');
-        $contact->message = request('message');
 
 
-        //Save it to the database
-        $contact->save();
-
-        //form validation
         $this->validate(request(),[
 
             'first' => 'required',
@@ -65,11 +59,32 @@ class PublicController extends Controller
             'subject' => 'required',
 
             'message' => 'required',
-        ]);
+
+            ]);
+
+
+            $data = $request->all();
+        //create a new job using the request data
+        $contacts = new Contact();
+
+        $contacts->first = $data['first'];
+        $contacts->last = $data['last'];
+        $contacts->email = $data['email'];
+        $contacts->subject = $data['subject'];
+        $contacts->message = $data['message'];
+
+        $contacts->save();
+
+
+        //Send Auto-Response Email
+
+        \Mail::to($contacts)->send(new WelcomeAgain($contacts));
 
         //Success Message
 
         session()->flash('message', "Thank you for your inquiry, we'll get back to you as soon as possible!");
+
+
 
         // return to the home page
         return redirect ('/contact');

@@ -11,11 +11,11 @@
                             {{ csrf_field() }}
                             <input type="hidden" value="{{$tap->id}}" name="id">
 
-                            <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
+                            <div class="form-group {{ $errors->has('title') ? ' has-error' : '' }}">
                                 <label for="title" class="col-md-4 control-label">Title</label>
 
                                 <div class="col-md-6">
-                                    <input id="title" type="text" class="form-control" name="title" value=""required autofocus>
+                                    <input id="title" type="text" class="form-control" name="title" value="{{$tap->title}}"required autofocus>
 
                                     @if ($errors->has('title'))
                                         <span class="help-block">
@@ -29,7 +29,7 @@
                                 <label for="type" class="col-md-4 control-label">Type</label>
 
                                 <div class="col-md-6">
-                                    <input id="type" type="text" class="form-control" name="type" value="{{ old('type') }}" required autofocus>
+                                    <input id="type" type="text" class="form-control" name="type" value="{{$tap->type}}" required autofocus>
 
                                     @if ($errors->has('type'))
                                         <span class="help-block">
@@ -43,7 +43,7 @@
                                 <label for="ABV" class="col-md-4 control-label">ABV</label>
 
                                 <div class="col-md-6">
-                                    <input id="ABV" type="number" step="any" class="form-control" name="ABV" value="{{ old('ABV') }}" required>
+                                    <input id="ABV" type="number" step="any" class="form-control" name="ABV" value="{{$tap->ABV}}" required>
 
                                     @if ($errors->has('ABV'))
                                         <span class="help-block">
@@ -57,7 +57,7 @@
                                 <label for="small" class="col-md-4 control-label">6oz $</label>
 
                                 <div class="col-md-6">
-                                    <input id="small" type="number" step="any" class="form-control" name="small" required>
+                                    <input id="small" type="number" step="any" class="form-control" name="small" value="{{$tap->small}}"required>
 
                                     @if ($errors->has('small'))
                                         <span class="help-block">
@@ -71,7 +71,7 @@
                                 <label for="small" class="col-md-4 control-label">12oz $</label>
 
                                 <div class="col-md-6">
-                                    <input id="small" type="number" step="any" class="form-control" name="large" required>
+                                    <input id="small" type="number" step="any" class="form-control" value="{{$tap->large}}" name="large" required>
 
                                     @if ($errors->has('large'))
                                         <span class="help-block">
@@ -83,7 +83,7 @@
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">
-                                        Add Brew
+                                        Update
                                     </button>
                                     <a class="btn btn-link" href="/admin/home">
                                         <button type="button" class="btn btn-secondary">Cancel</button></a>

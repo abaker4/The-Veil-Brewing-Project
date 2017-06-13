@@ -28,7 +28,7 @@
             </thead>
             @foreach($taps as $list)
                 <tbody>
-                <tr>
+                <tr class="taps-{{$list->id}}">
                     <th scope="row"></th>
                     <td>{{$list->title}}</td>
                     <td>{{$list->type}}</td>
@@ -37,10 +37,25 @@
                     <td>{{$list->large}}</td>
                     <td><a class="btn btn-link" href="/admin/taproom/{{$list->id}}/edit">
                         <button type="button" class="btn btn-primary">Edit</button></a></td>
-                    <td><a class="btn btn-link" href="/admin/taproom/{{$list->id}}/delete">
-                            <button type="button" class="btn btn-danger">X</button></a></td>
+                    {{--<a class="btn btn-link" href="/admin/taproom/{{$list->id}}/delete">--}}
+                          <td><button type="button" class="btn btn-danger deleteTap">X</button></td>
                 </tr>
+
+
+                <div id="delTap" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            Are you sure you want to delete this item?
+                            <a class="btn btn-link" href="/admin/taproom/{{$list->id}}/delete"><button class="btn btn-danger">Delete Tap</button></a>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Close</button>
+                        </div>
+                    </div>
+                </div>
+
+
                 </tbody>
+
+
 
             @endforeach
         </table>
@@ -84,9 +99,20 @@
                     <td>{{$list->responsibilities}}</td>
                     <td><a class="btn btn-link" href="/admin/jobs/{{$list->id}}/edit">
                             <button type="button" class="btn btn-primary">Edit</button></a></td>
-                    <td><a class="btn btn-link" href="/admin/jobs/{{$list->id}}/delete">
-                            <button type="button" class="btn btn-danger">X</button></a></td>
+                    <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target=".bd-example-modal-sm">X</button></td>
                 </tr>
+
+
+                <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            Are you sure you want to delete this item?
+                            <a class="btn btn-link" href="/admin/jobs/{{$list->id}}/delete"><button class="btn btn-danger">Delete job posting</button></a>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Close</button>
+                        </div>
+                    </div>
+                </div>
+
                 </tbody>
 
             @endforeach
@@ -180,10 +206,7 @@
                     <td>{{$list->subject}}</td>
                     <td>{{$list->message}}</td>
                     <td>{{$list->created_at}}</td>
-                    <td><a class="btn btn-link" href="/admin/events/{{$list->id}}/edit">
-                            <button type="button" class="btn btn-primary">Edit</button></a></td>
-                    <td><a class="btn btn-link" href="/admin/events/{{$list->id}}/delete">
-                            <button type="button" class="btn btn-danger">X</button></a></td>
+
                 </tr>
                 </tbody>
 
@@ -191,17 +214,41 @@
         </table>
 
 
-        <a class="btn btn-link " href="/admin/events/create">
-            <button type="button" class="btn btn-success">Create Event</button>
-        </a>
+
     </div>
 
     <hr>
 
 
+
 {{--/End Customer Messages--}}
 
+<script>
+
+    $(function (){
+        $('.deleteTap').on('click', function (e) {
+            e.preventDefault();
+            var id = $(this).data('id');
+            $.ajax({
+                url: '/admin/taproom/'+ id,
+                type: 'DELETE',
+                data: {
+                    id: id
+                },
+                success: function(response) {
+                    $('.taps-'+ id).remove();
+                },
+                error: function(error){
+                    alert('there is an error deleting tap');
+                }
+            });
+        });
+
+    });
+</script>
 @endsection
+
+
 
 
 

@@ -1,8 +1,9 @@
+
 @extends('layouts.app')
 
 @section('content')
 
-    <form method="post" action="/admin/taproom/{{ $tap->id }}">
+    <form method="post" action="/admin/taproom/{{ $taps->id }}">
         {{ method_field('DELETE') }}
         <div class="form-group">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -15,4 +16,4 @@
         </div>
     </form>
 
-    @endsection
+@endsection

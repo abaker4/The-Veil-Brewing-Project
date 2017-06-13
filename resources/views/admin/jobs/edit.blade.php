@@ -17,7 +17,7 @@
                                 <label for="title" class="col-md-4 control-label">Title</label>
 
                                 <div class="col-md-6">
-                                    <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}" required autofocus>
+                                    <input id="title" type="text" class="form-control" name="title" value="{{$jobs->title}}" required autofocus>
 
                                     @if ($errors->has('title'))
                                         <span class="help-block">
@@ -33,7 +33,7 @@
 
                                 <div class="col-md-6">
                                     {{--<input id="summary" type="text" class="form-control" name="summary" value="{{ old('summary') }}" required>--}}
-                                    <textarea class="form-control" id="exampleTextarea" name="summary" rows="4"></textarea>
+                                    <textarea class="form-control" id="exampleTextarea" name="summary" rows="4">{{$jobs->summary}}</textarea>
 
                                     @if ($errors->has('summary'))
                                         <span class="help-block">
@@ -49,7 +49,7 @@
 
                                 <div class="col-md-6">
                                     {{--<input id="q_description" type="text" class="form-control" name="q_description" value="{{ old('q_description') }}" required>--}}
-                                    <textarea class="form-control" id="q_description" name="q_description" rows="4"></textarea>
+                                    <textarea class="form-control" id="q_description" name="q_description" rows="4">{{$jobs->q_description}}</textarea>
 
                                     @if ($errors->has('q_description'))
                                         <span class="help-block">
@@ -65,7 +65,7 @@
 
                                 <div class="col-md-6">
                                     {{--<input id="responsibilities" type="text" class="form-control" name="responsibilities" value="{{ old('responsibilities') }}" required>--}}
-                                    <textarea class="form-control" id="exampleTextarea" name="responsibilities" rows="4"></textarea>
+                                    <textarea class="form-control" id="responsibilities" name="responsibilities" rows="4">{{$jobs->responsibilities}}</textarea>
 
                                     @if ($errors->has('responsibilities'))
                                         <span class="help-block">

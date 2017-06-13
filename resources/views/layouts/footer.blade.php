@@ -120,9 +120,10 @@
             $('.parallax-cans').parallax({imageSrc: '/img/veil/cans.jpeg'});
         });
 
-        $('#flash-message').fadeOut(5000);
+        $('#flash-message').fadeOut(10000);
 
-    </script>
+
+</script>
 
     </body>
     </html>

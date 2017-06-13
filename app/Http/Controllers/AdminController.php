@@ -7,8 +7,8 @@ use App\Taproom;
 use App\User;
 use App\Events;
 use App\Jobs;
-use App\Contacts;
-
+use App\Contact;
+use League\Flysystem\Exception;
 
 
 class AdminController extends Controller
@@ -34,15 +34,12 @@ class AdminController extends Controller
         $taps = Taproom::all();
         $events = Events::all();
         $jobs = Jobs::all();
-        $contacts = Contacts::all();
+        $contacts = Contact::all();
 
         return view('admin.index', compact('taps', 'events', 'jobs', 'contacts'));
 
 
-
     }
-
-
 
 
     public function showTap()
@@ -50,7 +47,6 @@ class AdminController extends Controller
 
         return view('admin.taproom.detail');
     }
-
 
 
     public function createTap()
@@ -69,35 +65,21 @@ class AdminController extends Controller
         $tap = Taproom::find($id);
 
 
-        return view('admin.taproom.edit',compact('tap') );
+        return view('admin.taproom.edit', compact('tap'));
+
 
     }
 
 
-
+    /**
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function storeTap(Request $request)
     {
 
-
-
-        $data = $request->all();
-        $data['id'];
-
-
-
-        $tap = Taproom::find($data['id']);
-
-            $tap->title = $data['title'];
-            $tap->type = $data['type'];
-            $tap->ABV = $data['ABV'];
-            $tap->small = $data['small'];
-            $tap->large = $data['large'];
-
-            $tap->save();
-
-
-
-        $this->validate(request(),[
+        $this->validate($request, [
 
             'title' => 'required',
 
@@ -111,67 +93,73 @@ class AdminController extends Controller
 
         ]);
 
+        $data = $request->all();
 
+        $tap = Taproom::find($data['id']);
+
+        $tap->title = $data['title'];
+        $tap->type = $data['type'];
+        $tap->ABV = $data['ABV'];
+        $tap->small = $data['small'];
+        $tap->large = $data['large'];
+
+        $tap->save();
 
         session()->flash('message', 'Your new brew has now been added');
-
-
-
 
         return redirect('/admin/home');
 
     }
 
-        public function newTap()
+    public function newTap(Request $request)
+    {
 
-        {
+        //form validation
+
+        $this->validate(request(), [
+
+            'title' => 'required',
+
+            'type' => 'required',
+
+            'ABV' => 'required',
+
+            'small' => 'required',
+
+            'large' => 'required',
+        ]);
+
+
+
+        $data = $request->all();
 
         //create a new tap using the request data
-            $tap = new Taproom;
+        $tap = new Taproom();
 
-            $tap->title = request('title');
-            $tap->type = request('type');
-            $tap->ABV = request('ABV');
-            $tap->small = request('small');
-            $tap->large = request('large');
+        $tap->title = $data['title'];
+        $tap->type = $data['type'];
+        $tap->ABV = $data['ABV'];
+        $tap->small = $data['small'];
+        $tap->large = $data['large'];
 
-
-            //Save it to the database
-            $tap->save();
-
-            //form validation
-            $this->validate(request(),[
-
-                'title' => 'required',
-
-                'type' => 'required',
-
-                'ABV' => 'required',
-
-                'small' => 'required',
-
-                'large' => 'required',
-            ]);
-
+        //Save it to the database
+        $tap->save();
 
         // return to the home page
-            return redirect ('admin/home');
+        return redirect('admin/home');
 
-        }
-
-
-        public function destroyTap(Request $request)
-        {
-
-            $id = $request->id;
-            $tap = Taproom::find($id);
-            $tap->delete();
-
-            return redirect ('/admin/home');
-        }
+    }
 
 
+    public function destroyTap(Request $request)
+    {
 
+        $id = $request->id;
+        $tap = Taproom::find($id);
+        $tap->delete();
+
+        return redirect('/admin/home');
+    }
 
 
     public function createJob()
@@ -188,28 +176,35 @@ class AdminController extends Controller
     }
 
 
-
-
     public function editJob($id)
     {
 
         $jobs = Jobs::find($id);
 
 
-        return view('admin.jobs.edit',compact('jobs') );
+        return view('admin.jobs.edit', compact('jobs'));
 
     }
-
 
 
     public function storeJob(Request $request)
     {
 
+        $this->validate(request(), [
+
+            'title' => 'required',
+
+            'summary' => 'required',
+
+            'q_description' => 'required',
+
+            'responsibilities' => 'required'
+
+        ]);
 
 
         $data = $request->all();
         $data['id'];
-
 
 
         $job = Jobs::find($data['id']);
@@ -223,23 +218,9 @@ class AdminController extends Controller
 
 
 
-        $this->validate(request(),[
-
-            'title' => 'required',
-
-            'summary' => 'required',
-
-            'q_description' => 'required',
-
-            'responsibilities' => 'required'
-
-        ]);
-
 
 
         session()->flash('message', 'Your new brew has now been added');
-
-
 
 
         return redirect('/admin/home');
@@ -255,7 +236,7 @@ class AdminController extends Controller
 
         $job->title = request('title');
         $job->summary = request('summary');
-        $job->q_description= request('q_description');
+        $job->q_description = request('q_description');
         $job->responsibilities = request('responsibilities');
 
 
@@ -263,7 +244,7 @@ class AdminController extends Controller
         $job->save();
 
         //form validation
-        $this->validate(request(),[
+        $this->validate(request(), [
 
             'title' => 'required',
 
@@ -276,7 +257,7 @@ class AdminController extends Controller
 
 
         // return to the home page
-        return redirect ('/admin/home');
+        return redirect('/admin/home');
 
     }
 
@@ -288,9 +269,8 @@ class AdminController extends Controller
         $job = Jobs::find($id);
         $job->delete();
 
-        return redirect ('/admin/home');
+        return redirect('/admin/home');
     }
-
 
 
     public function createEvent()
@@ -307,28 +287,29 @@ class AdminController extends Controller
     }
 
 
-
-
     public function editEvent($id)
     {
 
         $events = Events::find($id);
 
 
-        return view('admin.events.edit',compact('events') );
+        return view('admin.events.edit', compact('events'));
 
     }
-
 
 
     public function storeEvent(Request $request)
     {
 
+        $this->validate(request(), [
 
+            'title' => 'required',
+
+            'body' => 'required',
+        ]);
 
         $data = $request->all();
         $data['id'];
-
 
 
         $event = Events::find($data['id']);
@@ -339,18 +320,9 @@ class AdminController extends Controller
 
 
 
-        $this->validate(request(),[
-
-            'title' => 'required',
-
-            'body' => 'required',
-        ]);
-
 
 
         session()->flash('message', 'Your new event has now been added');
-
-
 
 
         return redirect('/admin/home');
@@ -372,7 +344,7 @@ class AdminController extends Controller
         $event->save();
 
         //form validation
-        $this->validate(request(),[
+        $this->validate(request(), [
 
             'title' => 'required',
 
@@ -382,7 +354,7 @@ class AdminController extends Controller
 
 
         // return to the home page
-        return redirect ('/admin/home');
+        return redirect('/admin/home');
 
     }
 
@@ -394,11 +366,8 @@ class AdminController extends Controller
         $event = Events::find($id);
         $event->delete();
 
-        return redirect ('/admin/home');
+        return redirect('/admin/home');
     }
-
-
-
 
 
 }

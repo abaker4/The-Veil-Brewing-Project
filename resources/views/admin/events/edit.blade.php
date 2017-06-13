@@ -8,14 +8,14 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Create New Event</div>
                     <div class="panel-body">
-                        <form class="form-horizontal" role="form" method="POST" action="/admin/newevent"}>
+                        <form class="form-horizontal" role="form" method="POST" action="/admin/events"}>
                             {{ csrf_field() }}
-
+                            <input type="hidden" value="{{$events->id}}" name="id">
                             <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                                 <label for="title" class="col-md-4 control-label">Title</label>
 
                                 <div class="col-md-6">
-                                    <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}" required autofocus>
+                                    <input id="title" type="text" class="form-control" name="title" value="{{$events->title}}" required autofocus>
 
                                     @if ($errors->has('title'))
                                         <span class="help-block">
@@ -30,7 +30,7 @@
                                 <label for="summary" class="col-md-4 control-label">Event Summary</label>
 
                                 <div class="col-md-6">
-                                    <textarea class="form-control" id="exampleTextarea" name="body" rows="10"></textarea>
+                                    <textarea class="form-control" id="exampleTextarea"  name="body" rows="10">{{$events->body}}</textarea>
 
                                     @if ($errors->has('body'))
                                         <span class="help-block">

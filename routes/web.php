@@ -26,6 +26,8 @@ Route::get('/taproom', 'PublicController@taproom');
 Route::get('/jobs', 'PublicController@jobs');
 
 
+
+
 Auth::routes();
 
 
@@ -45,9 +47,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 
     Route::get('/taproom/{id}/edit', 'AdminController@editTap');
 
-    Route::get('/taproom/{id}/delete', 'AdminController@destroyTap');
-
-
+    Route::delete('/taproom/{id}', 'AdminController@destroyTap');
 
     // Jobs routes
     Route::get('/jobs/create', 'AdminController@createJob');
@@ -79,8 +79,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 
     Route::get('/events/{id}/delete', 'AdminController@destroyEvent');
 
-
-    //Contacts routes
 
 
 
