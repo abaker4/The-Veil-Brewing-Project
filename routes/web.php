@@ -1,6 +1,7 @@
 <?php
 
 
+<<<<<<< HEAD
 use Illuminate\Support\Facades\Route;
 
 
@@ -71,9 +72,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::post('/newjob', 'AdminController@newJob');
 
     Route::get('/jobs/{id}', 'AdminController@showJob');
+=======
+>>>>>>> origin/master
 
-    Route::get('/jobs/{id}/edit', 'AdminController@editJob');
 
+<<<<<<< HEAD
     Route::delete('/jobs/{id}', 'AdminController@destroyJob');
 
 
@@ -111,11 +114,13 @@ POST /posts
 GET /posts/{id}/edit
 
 GET /posts/{id}
+=======
+Route::get('/', 'PublicController@index');
+>>>>>>> origin/master
 
-POST /posts/{id}
+Route::post('/storebusiness', 'PublicController@storeBusiness');
 
-DELETE /posts/{id}
 
-*/
+Route::get('/success', 'PublicController@success');
 
 

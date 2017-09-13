@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>The Veil Brewing Company</title>
+    <title></title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -34,7 +34,11 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/home') }}">
+<<<<<<< HEAD
                         [ The Veil ]
+=======
+
+>>>>>>> origin/master
                     </a>
                 </div>
 

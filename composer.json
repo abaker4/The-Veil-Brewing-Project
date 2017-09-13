@@ -8,8 +8,13 @@
         "php": ">=5.6.4",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
+<<<<<<< HEAD
         "sendgrid/sendgrid": "~5.5"
 
+=======
+        "sendgrid/sendgrid": "~5.5",
+        "cornford/googlmapper": "2.*"
+>>>>>>> origin/master
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
