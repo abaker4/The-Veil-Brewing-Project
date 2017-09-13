@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Mail;
 use App\Taproom;
 use App\User;
 use App\Events;

@@ -75,6 +75,8 @@
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
 
     {{--<script src="/js/app.js"></script>--}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="/js.parallax.min.js"></script>
     <script src="/js/parallax.js"></script>
     <script src="/js/main.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
@@ -109,7 +111,7 @@
             $('.parallax-comarea').parallax({imageSrc: '/img/veil/comarea.jpeg'});
 
 
-            $('.parallax-exterior').parallax({imageSrc: '/img/veil/exterior1.jpeg'});
+            $('.parallax-exterior').parallax({imageSrc: '/img/veil/exterior.jpeg'});
 
 
             $('.parallax-extsign').parallax({imageSrc: '/img/veil/extsign.jpeg'});

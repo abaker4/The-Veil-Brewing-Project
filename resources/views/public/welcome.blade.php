@@ -200,7 +200,7 @@
 
 
                     <div class="col-md-5">
-                        <img class="featurette-image img-fluid mx-auto" src="/img/veil/glass.jpeg" alt="Generic placeholder image">
+                        <img class="featurette-image img-fluid mx-auto" src="/img/veil/glass.jpg" alt="Veil Glass">
                     </div>
                 </div>
             </div>
