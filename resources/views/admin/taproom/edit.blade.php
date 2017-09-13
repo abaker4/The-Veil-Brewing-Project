@@ -5,21 +5,22 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Add Brew</div>
+                    <div class="panel-heading">Edit Brew</div>
                     <div class="panel-body">
-                        <form class="form-horizontal" role="form" method="POST" action="/admin/newtap">
+                        <form class="form-horizontal" role="form" method="POST" action="/admin/storetap">
                             {{ csrf_field() }}
 
+                            <input type="hidden" value="{{$tap->id}}" name="id">
 
                             <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                                 <label for="title" class="col-md-4 control-label">Title</label>
 
                                 <div class="col-md-6">
-                                    <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}" required autofocus>
+                                    <input id="title" type="text" class="form-control" name="title" value="{{$tap->title}}" required autofocus>
 
                                     @if ($errors->has('title'))
                                         <span class="help-block">
-                                           <strong>{{ $errors->first('title') }}</strong>
+                                          <strong>{{ $errors->first('title') }}</strong>
                                         </span>
                                     @endif
                                 </div>
@@ -29,11 +30,11 @@
                                 <label for="type" class="col-md-4 control-label">Type</label>
 
                                 <div class="col-md-6">
-                                    <input id="type" type="text" class="form-control" name="type" value="{{ old('type') }}" required autofocus>
+                                    <input id="type" type="text" class="form-control" name="type" value="{{ $tap->type }}" required autofocus>
 
                                     @if ($errors->has('type'))
                                         <span class="help-block">
-                                           <strong>{{ $errors->first('type') }}</strong>
+                                            <strong>{{ $errors->first('type') }}</strong>
                                         </span>
                                     @endif
                                 </div>
@@ -43,11 +44,11 @@
                                 <label for="ABV" class="col-md-4 control-label">ABV</label>
 
                                 <div class="col-md-6">
-                                    <input id="ABV" type="number" step="any" class="form-control" name="ABV" value="{{ old('ABV') }}" required>
+                                    <input id="ABV" type="number" step="any" class="form-control" name="ABV" value="{{ $tap->ABV }}" required>
 
                                     @if ($errors->has('ABV'))
                                         <span class="help-block">
-                                           <strong>{{ $errors->first('ABV') }}</strong>
+                                          <strong>{{ $errors->first('ABV') }}</strong>
                                         </span>
                                     @endif
                                 </div>
@@ -57,11 +58,11 @@
                                 <label for="small" class="col-md-4 control-label">6oz $</label>
 
                                 <div class="col-md-6">
-                                    <input id="small" type="number" step="any" class="form-control" name="small" required>
+                                    <input id="small" type="number" step="any" class="form-control" name="small"  value="{{$tap->small}}"required>
 
                                     @if ($errors->has('small'))
                                         <span class="help-block">
-                                            <strong>{{ $errors->first('small') }}</strong>
+                                             <strong>{{ $errors->first('small') }}</strong>
                                         </span>
                                     @endif
                                 </div>
@@ -71,11 +72,11 @@
                                 <label for="small" class="col-md-4 control-label">12oz $</label>
 
                                 <div class="col-md-6">
-                                    <input id="small" type="number" step="any" class="form-control" name="large" required>
+                                    <input id="small" type="number" step="any" class="form-control" name="large" value="{{$tap->large}}"required>
 
                                     @if ($errors->has('large'))
                                         <span class="help-block">
-                                            <strong>{{ $errors->first('large') }}</strong>
+                                             <strong>{{ $errors->first('large') }}</strong>
                                         </span>
                                     @endif
                                 </div>

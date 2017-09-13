@@ -75,7 +75,8 @@
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
 
     {{--<script src="/js/app.js"></script>--}}
-    <script src="/js.parallax.min.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/parallax.min.js"></script>
     <script src="/js/parallax.js"></script>
     <script src="/js/main.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->

@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@yield('content')
+@section('content')
 
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -52,3 +52,6 @@
 </div>
 
 <p>Click on an image below to check out our online shop where you can purchase tees, glassware, & more! Please email webstore@theveilbrewing.com with any questions about online orders.  All orders are generally processed in 1 business day and shipped via 2-3 day Priority Mail by USPS.</p>
+
+
+    @endsection

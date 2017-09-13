@@ -234,12 +234,6 @@ class AdminController extends Controller
     }
 
 
-    public function showJob()
-    {
-
-        return view('admin.jobs.detail');
-    }
-
 
     public function editJob($id)
     {

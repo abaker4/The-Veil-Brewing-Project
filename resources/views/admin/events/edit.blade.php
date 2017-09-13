@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Create New Event</div>
+                    <div class="panel-heading">Edit Event</div>
                     <div class="panel-body">
                         <form class="form-horizontal" role="form" method="POST" action="/admin/events"}>
                             {{ csrf_field() }}
@@ -21,8 +21,8 @@
 
                                     @if ($errors->has('title'))
                                         <span class="help-block">
-                                        <strong>{{ $errors->first('title') }}</strong>
-                                    </span>
+                                          <strong>{{ $errors->first('title') }}</strong>
+                                        </span>
                                     @endif
                                 </div>
                             </div>
@@ -36,8 +36,8 @@
 
                                     @if ($errors->has('body'))
                                         <span class="help-block">
-                                        <strong>{{ $errors->first('body') }}</strong>
-                                    </span>
+                                            <strong>{{ $errors->first('body') }}</strong>
+                                        </span>
                                     @endif
                                 </div>
                             </div>
@@ -50,8 +50,8 @@
 
                                     @if ($errors->has('start'))
                                         <span class="help-block">
-                                        <strong>{{ $errors->first('start') }}</strong>
-                                    </span>
+                                            <strong>{{ $errors->first('start') }}</strong>
+                                        </span>
                                     @endif
                                 </div>
                             </div>
@@ -64,8 +64,8 @@
 
                                         @if ($errors->has('end'))
                                             <span class="help-block">
-                                        <strong>{{ $errors->first('end') }}</strong>
-                                    </span>
+                                             <strong>{{ $errors->first('end') }}</strong>
+                                            </span>
                                         @endif
                                     </div>
                                 </div>

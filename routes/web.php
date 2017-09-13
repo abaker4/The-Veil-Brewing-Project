@@ -56,21 +56,17 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     Route::get('/taproom/create', 'AdminController@createTap');
 
-    Route::get('/taproom/{id}', 'AdminController@showTap');
-
     Route::get('/taproom/{id}/edit', 'AdminController@editTap');
 
     Route::delete('/taproom/{id}', 'AdminController@destroyTap')->name('deleteTap');
 
 
-    // Jobs routes
+    // jobs routes
     Route::get('/jobs/create', 'AdminController@createJob');
 
-    Route::post('/jobs', 'AdminController@storeJob')->name('jobs');
+    Route::post('/storejob', 'AdminController@storeJob')->name('jobs');
 
     Route::post('/newjob', 'AdminController@newJob');
-
-    Route::get('/jobs/{id}', 'AdminController@showJob');
 
     Route::delete('/jobs/{id}', 'AdminController@destroyJob');
 
@@ -85,7 +81,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     Route::post('/newevent', 'AdminController@newEvent');
 
-    Route::get('/events/{id}', 'AdminController@showEvent');
 
     Route::get('/events/{id}/edit', 'AdminController@editEvent');
 
@@ -94,27 +89,5 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
 });
 
-
-
-
-
-
-/*
-GET /posts
-
-GET /posts/create
-
-POST /posts
-
-GET /posts/{id}/edit
-
-GET /posts/{id}
-
-Route::post('/storebusiness', 'PublicController@storeBusiness');
-
-
-Route::get('/success', 'PublicController@success');
-
-/*
 
 
