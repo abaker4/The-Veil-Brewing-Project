@@ -10,7 +10,6 @@ use App\Taproom;
 use App\Events;
 use App\Jobs;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\Welcome;
 use App\Mail\WelcomeAgain;
 use App\ContactNewsletter;
 use Illuminate\Support\Facades\DB;

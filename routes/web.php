@@ -68,7 +68,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     Route::post('/newjob', 'AdminController@newJob');
 
-    Route::get('/jobs/{id}/create', 'AdminController@editJob');
+    Route::get('/jobs/{id}/edit', 'AdminController@editJob');
 
     Route::delete('/jobs/{id}', 'AdminController@destroyJob');
 

@@ -3,14 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Mail;
 use App\Taproom;
-use App\User;
 use App\Events;
 use App\Jobs;
 use App\Contact;
 use League\Flysystem\Exception;
-use App\ContactNewsletter;
 use Illuminate\Support\Facades\DB;
 use App\Mail\tapnewsletter;
 use App\Mail\eventsnewsletter;

@@ -134,7 +134,7 @@
                     <td>{{$event->body}}</td>
                     <td>{{$event->start->toDayDateTimeString()}}</td>
                     <td>{{$event->end->toDayDateTimeString()}}</td>
-                    <td><a class="btn btn-link" href="/admin/events/{{$event->id}}">
+                    <td><a class="btn btn-link" href="/admin/events/{{$event->id}}/edit">
                             <button type="button" class="btn btn-primary">Edit</button></a></td>
                     <td><button type="button" data-id="{{$event->id}}" class="btn btn-danger deleteEvent">X</button></td>
                 </tr>
