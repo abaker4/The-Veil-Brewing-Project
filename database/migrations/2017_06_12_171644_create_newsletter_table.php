@@ -20,10 +20,12 @@ class CreateNewsletterTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('contact_newsletter', function (Blueprint $table) {
+        Schema::create('contact_newsletters', function (Blueprint $table) {
+            $table->integer('id');
+            $table->increments('id');
             $table->integer('contact_id');
             $table->integer('newsletter_id');
-            $table->primary(['contact_id', 'newsletter_id', ]);
+            $table->timestamps();
         });
     }
 
@@ -36,6 +38,6 @@ class CreateNewsletterTable extends Migration
     {
         Schema::dropIfExists('newsletters');
 
-        Schema::dropIfExists('contact_newsletter');
+        Schema::dropIfExists('contact_newsletters');
     }
 }

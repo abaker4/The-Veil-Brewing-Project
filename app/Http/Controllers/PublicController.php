@@ -9,8 +9,11 @@ use App\Contact;
 use App\Taproom;
 use App\Events;
 use App\Jobs;
+use Illuminate\Support\Facades\Mail;
 use App\Mail\Welcome;
 use App\Mail\WelcomeAgain;
+use App\ContactNewsletter;
+use Illuminate\Support\Facades\DB;
 
 
 class PublicController extends Controller
@@ -20,6 +23,13 @@ class PublicController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function agefilter()
+    {
+        return view('public.agefilter');
+
+    }
+
     public function index()
 
     {
@@ -42,48 +52,56 @@ class PublicController extends Controller
         return view('public.contact');
     }
 
+
+
     public function newContact(Request $request)
 
     {
-
-
-
         $this->validate(request(),[
 
             'first' => 'required',
-
             'last' => 'required',
-
             'email' => 'required',
-
             'subject' => 'required',
-
-            'message' => 'required',
+            'message' => 'required'
 
             ]);
 
+        $data = $request->all();
 
-            $data = $request->all();
-        //create a new job using the request data
-        $contacts = new Contact();
-
-        $contacts->first = $data['first'];
-        $contacts->last = $data['last'];
-        $contacts->email = $data['email'];
-        $contacts->subject = $data['subject'];
-        $contacts->message = $data['message'];
-
-        $contacts->save();
+        $contact = Contact::firstOrCreate(['email' => $data['email']]);
+        $contact->first = $data['first'];
+        $contact->last = $data['last'];
+        $contact->subject = $data['subject'];
+        $contact->message = $data['message'];
 
 
-        //Send Auto-Response Email
+        $contactNewsletter = new ContactNewsletter();
 
-        \Mail::to($contacts)->send(new WelcomeAgain($contacts));
+        $contact_exists = DB::table('contact_newsletters')->where([
+            ['contact_id', '=', $contact->id],
+            ['newsletter_id', '=',  $data['newsletter_id'] ]
+        ])->get();
 
-        //Success Message
+        if($contact_exists->isEmpty()){
 
-        session()->flash('message', "Thank you for your inquiry, we'll get back to you as soon as possible!");
+            $contactNewsletter->contact_id = $contact->id;
 
+            $contactNewsletter->newsletter_id = $data['newsletter_id'];
+
+            $contactNewsletter->save();
+
+            //Success Message
+
+            session()->flash('message', "Thank you for your inquiry, we'll get back to you as soon as possible!");
+
+            //Send Auto-Response Email
+            Mail::to($contact)->send(new WelcomeAgain($contact));
+
+        } else{
+
+            session()->flash('message', 'You are already signed up');
+        }
 
 
         // return to the home page
@@ -112,6 +130,78 @@ class PublicController extends Controller
         $taproom = $taproom->all();
 
         return view('public.taproom', compact('taproom'));
+
+    }
+
+    public function tapSignUp(Request $request)
+    {
+
+         $data = $request->all();
+         $contact = Contact::firstOrCreate(['email' => $data['email']]);
+
+
+        $contactNewsletter = new ContactNewsletter();
+
+        $contact_exists = DB::table('contact_newsletters')->where([
+            ['contact_id', '=', $contact->id],
+            ['newsletter_id', '=',  $data['newsletter_id'] ]
+        ])->get();
+
+        if($contact_exists->isEmpty()){
+            $contactNewsletter->contact_id = $contact->id;
+
+            $contactNewsletter->newsletter_id = $data['newsletter_id'];
+
+            $contactNewsletter->save();
+
+            session()->flash('message', "So you love beer? We do too! Glad you finally decided to join the club!");
+
+            Mail::to($contact)->send(new WelcomeAgain($contact));
+
+        }else{
+
+            session()->flash('message', 'You are already signed up');
+        }
+
+        return redirect ('/taproom');
+    }
+
+
+
+
+    public function eventSignUp(Request $request)
+    {
+        $data = $request->all();
+        $contact = Contact::firstOrCreate(['email' => $data['email']]);
+
+
+        $contactNewsletter = new ContactNewsletter();
+
+        $contact_exists = DB::table('contact_newsletters')->where([
+            ['contact_id', '=', $contact->id],
+            ['newsletter_id', '=',  $data['newsletter_id'] ]
+        ])->get();
+
+        if($contact_exists->isEmpty()) {
+
+            $contactNewsletter->contact_id = $contact->id;
+
+            $contactNewsletter->newsletter_id = $data['newsletter_id'];
+
+            $contactNewsletter->save();
+
+            session()->flash('message', "Welcome to the Veil, where the party don't stop until 8 in the morning!");
+
+            Mail::to($contact)->send(new WelcomeAgain($contact));
+
+        }else {
+
+            session()->flash('message','You are already signed up!');
+        }
+
+
+
+        return redirect ('/events');
 
     }
 

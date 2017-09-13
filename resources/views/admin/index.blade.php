@@ -13,6 +13,11 @@
         </div>
     </div>
 
+    @if($flash = session('message'))
+        <div id="flash-message" class="alert alert-success" role="alert">
+            {{ $flash }}
+        </div>
+    @endif
     {{--Add Tap Section--}}
     <div class="container">
         <table id="fonts" class="table table-hover table-inverse">
@@ -26,44 +31,31 @@
                 <th>12oz</th>
             </tr>
             </thead>
-            @foreach($taps as $list)
+            @foreach($taps as $tap)
                 <tbody>
-                <tr class="taps-{{$list->id}}">
+                <tr class="taps-{{$tap->id}}">
                     <th scope="row"></th>
-                    <td>{{$list->title}}</td>
-                    <td>{{$list->type}}</td>
-                    <td>{{$list->ABV}}</td>
-                    <td>{{$list->small}}</td>
-                    <td>{{$list->large}}</td>
-                    <td><a class="btn btn-link" href="/admin/taproom/{{$list->id}}/edit">
-                        <button type="button" class="btn btn-primary">Edit</button></a></td>
-                    {{--<a class="btn btn-link" href="/admin/taproom/{{$list->id}}/delete">--}}
-                          <td><button type="button" class="btn btn-danger deleteTap">X</button></td>
+                    <td>{{$tap->title}}</td>
+                    <td>{{$tap->type}}</td>
+                    <td>{{$tap->ABV}}</td>
+                    <td>{{$tap->small}}</td>
+                    <td>{{$tap->large}}</td>
+                    <td><a class="btn btn-link" href="/admin/taproom/{{$tap->id}}/edit">
+                        <button type="button" class="btn btn-primary">Edit</button></a>
+                        <button type="button" data-id="{{$tap->id}}" class="btn btn-danger deleteTap">X</button></td>
                 </tr>
-
-
-                <div id="delTap" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-sm">
-                        <div class="modal-content">
-                            Are you sure you want to delete this item?
-                            <a class="btn btn-link" href="/admin/taproom/{{$list->id}}/delete"><button class="btn btn-danger">Delete Tap</button></a>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Close</button>
-                        </div>
-                    </div>
-                </div>
-
-
                 </tbody>
-
-
-
             @endforeach
         </table>
-
 
         <a class="btn btn-link " href="/admin/taproom/create">
             <button type="button" class="btn btn-success">Add Tap Item</button>
         </a>
+
+        <button class="btn btn-primary pull-right" id="sendTapNewsletter">
+            Send Taproom Newsletter
+        </button>
+
     </div>
 
     <hr>
@@ -89,30 +81,17 @@
                 <th>Responsibilities</th>
             </tr>
             </thead>
-            @foreach($jobs as $list)
+            @foreach($jobs as $job)
                 <tbody>
-                <tr>
+                <tr id="jobs-{{$job->id}}">
                     <th scope="row"></th>
-                    <td>{{$list->title}}</td>
-                    <td>{{$list->summary}}</td>
-                    <td>{{$list->q_description}}</td>
-                    <td>{{$list->responsibilities}}</td>
-                    <td><a class="btn btn-link" href="/admin/jobs/{{$list->id}}/edit">
+                    <td>{{$job->title}}</td>
+                    <td>{{$job->summary}}</td>
+                    <td>{{$job->q_description}}</td>
+                    <td>{{$job->responsibilities}}</td>
+                    <td><a class="btn btn-link" href="/admin/jobs/{{$job->id}}/edit">
                             <button type="button" class="btn btn-primary">Edit</button></a></td>
-                    <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target=".bd-example-modal-sm">X</button></td>
-                </tr>
-
-
-                <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-sm">
-                        <div class="modal-content">
-                            Are you sure you want to delete this item?
-                            <a class="btn btn-link" href="/admin/jobs/{{$list->id}}/delete"><button class="btn btn-danger">Delete job posting</button></a>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Close</button>
-                        </div>
-                    </div>
-                </div>
-
+                       <td> <button type="button" data-id="{{$job->id}}" class="btn btn-danger deleteJob">X</button></td>
                 </tbody>
 
             @endforeach
@@ -143,20 +122,21 @@
                 <th></th>
                 <th>Title</th>
                 <th>Body</th>
-                <th></th>
-                <th></th>
+                <th>Start</th>
+                <th>End</th>
             </tr>
             </thead>
-            @foreach($events as $list)
+            @foreach($events as $event)
                 <tbody>
-                <tr>
+                <tr class="events-{{$event->id}}">
                     <th scope="row"></th>
-                    <td>{{$list->title}}</td>
-                    <td>{{$list->body}}</td>
-                    <td><a class="btn btn-link" href="/admin/events/{{$list->id}}/edit">
+                    <td>{{$event->title}}</td>
+                    <td>{{$event->body}}</td>
+                    <td>{{$event->start->toDayDateTimeString()}}</td>
+                    <td>{{$event->end->toDayDateTimeString()}}</td>
+                    <td><a class="btn btn-link" href="/admin/events/{{$event->id}}">
                             <button type="button" class="btn btn-primary">Edit</button></a></td>
-                    <td><a class="btn btn-link" href="/admin/events/{{$list->id}}/delete">
-                            <button type="button" class="btn btn-danger">X</button></a></td>
+                    <td><button type="button" data-id="{{$event->id}}" class="btn btn-danger deleteEvent">X</button></td>
                 </tr>
                 </tbody>
 
@@ -164,9 +144,13 @@
         </table>
 
 
-        <a class="btn btn-link " href="/admin/events/create">
+        <a class="btn btn-link" href="/admin/events/create">
             <button type="button" class="btn btn-success">Create Event</button>
         </a>
+        <button class="btn btn-primary justify-content-right" id="sendEventsNewsletter">
+            Send Events Newsletter
+        </button>
+
     </div>
 
     <hr>
@@ -196,16 +180,16 @@
                 <th>Created_At</th>
             </tr>
             </thead>
-            @foreach($contacts as $list)
+            @foreach($contacts as $contact)
                 <tbody>
                 <tr>
                     <th scope="row"></th>
-                    <td>{{$list->first}}</td>
-                    <td>{{$list->last}}</td>
-                    <td>{{$list->email}}</td>
-                    <td>{{$list->subject}}</td>
-                    <td>{{$list->message}}</td>
-                    <td>{{$list->created_at}}</td>
+                    <td>{{$contact->first}}</td>
+                    <td>{{$contact->last}}</td>
+                    <td>{{$contact->email}}</td>
+                    <td>{{$contact->subject}}</td>
+                    <td>{{$contact->message}}</td>
+                    <td>{{$contact->created_at}}</td>
 
                 </tr>
                 </tbody>
@@ -213,39 +197,146 @@
             @endforeach
         </table>
 
-
-
+        <button class="btn btn-primary justify-content-right" id="sendGeneralNewsletter">
+            Send General Newsletter
+        </button>
     </div>
 
     <hr>
 
-
-
-{{--/End Customer Messages--}}
-
 <script>
+    $(function () {
 
-    $(function (){
-        $('.deleteTap').on('click', function (e) {
-            e.preventDefault();
+        // For deleting taps
+        $('.deleteTap').on('click', function () {
+
             var id = $(this).data('id');
+
             $.ajax({
                 url: '/admin/taproom/'+ id,
                 type: 'DELETE',
-                data: {
-                    id: id
-                },
+                data:{},
                 success: function(response) {
-                    $('.taps-'+ id).remove();
+                    $(".taps-" + id).remove();
                 },
                 error: function(error){
-                    alert('there is an error deleting tap');
+                    alert('there is an error deleting tap posting');
                 }
             });
         });
 
+        $('.deleteJob').on('click', function () {
+
+            var id = $(this).data('id');
+
+            $.ajax({
+                url: '/admin/jobs/'+ id,
+                type: 'DELETE',
+                data: {},
+                success: function(response) {
+                    $("#jobs-" + id).remove();
+                },
+                error: function(error){
+                    alert('there is an error deleting job posting');
+                }
+            });
+        });
+
+        $('.deleteEvent').on('click', function () {
+
+            var id = $(this).data('id');
+
+            $.ajax({
+                url: '/admin/events/'+ id,
+                type: 'DELETE',
+                data: {},
+                success: function(response) {
+                    $(".events-" + id).remove();
+                },
+                error: function(error){
+                    alert('there is an error deleting event posting');
+                }
+            });
+        });
+
+        $('#sendTapNewsletter').on('click', function () {
+
+            var self = this;
+            $(self).attr('disabled', true);
+            $(self).html('Sending...');
+
+            $.ajax({
+                url: '/admin/tapnewsletter',
+                type: 'POST',
+                data: {},
+                success: function(response) {
+                    $(self).attr('disabled', false);
+                    $(self).html('Send Taproom Newsletter');
+                    alert(response)
+                },
+                error: function(error){
+                    $(self).attr('disabled', false);
+                    $(self).html('Send');
+                    alert('there is an error sending newsletter');
+                }
+            });
+        });
+
+
+        $('#sendEventsNewsletter').on('click', function () {
+
+            var self = this;
+            $(self).attr('disabled', true);
+            $(self).html('Sending...');
+
+            $.ajax({
+                url: '/admin/eventsnewsletter',
+                type: 'POST',
+                data: {},
+                success: function(response) {
+                    $(self).attr('disabled', false);
+                    $(self).html('Send Events Newsletter');
+                    alert(response)
+                },
+                error: function(error){
+                    $(self).attr('disabled', false);
+                    $(self).html('Send');
+                    alert('there is an error sending newsletter');
+                }
+            });
+        });
+
+        $('#sendGeneralNewsletter').on('click', function () {
+
+            var self = this;
+            $(self).attr('disabled', true);
+            $(self).html('Sending...');
+
+            $.ajax({
+                url: '/admin/generalnewsletter',
+                type: 'POST',
+                data: {},
+                success: function(response) {
+                    $(self).attr('disabled', false);
+                    $(self).html('Send General Newsletter');
+                    alert(response);
+                },
+                error: function(error){
+                    $(self).attr('disabled', false);
+                    $(self).html('Send');
+                    alert('there is an error sending newsletter');
+                }
+            });
+        });
+        $('#flash-message').fadeOut(10000);
+
     });
-</script>
+    </script>
+
+
+{{--/End Customer Messages--}}
+
+
 @endsection
 
 

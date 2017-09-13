@@ -1,23 +1,21 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
-Route::get('/', 'PublicController@index');
+use Illuminate\Support\Facades\Route;
+
+
+
+Route::get('/', 'PublicController@agefilter');
+
+Route::get('/home', 'PublicController@index');
 
 Route::get('/store', 'PublicController@store');
 
 Route::get('/contact', 'PublicController@contact');
 
+
 Route::post('/contact', 'PublicController@newContact');
+
 
 Route::get('/events', 'PublicController@events');
 
@@ -26,20 +24,35 @@ Route::get('/taproom', 'PublicController@taproom');
 Route::get('/jobs', 'PublicController@jobs');
 
 
+Route::post('/tapsignup', 'PublicController@tapSignUp');
+
+Route::post('/eventsignup', 'PublicController@eventSignUp');
+
+
+
 
 
 Auth::routes();
 
+Route::get('/register', function () {
+    return redirect('/login');
+});
+Route::post('/register', function () {
+    return redirect('/login');
+});
 
-
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     Route::get('/home', 'AdminController@index')->name('home');
+
+    Route::post('/generalnewsletter', 'AdminController@generalnewsletter');
 
     // Taproom routes
     Route::post('/taproom', 'AdminController@storeTap')->name('taproom');
 
     Route::post('/newtap', 'AdminController@newTap');
+
+    Route::post('/tapnewsletter', 'AdminController@tapnewsletter');
 
     Route::get('/taproom/create', 'AdminController@createTap');
 
@@ -47,7 +60,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 
     Route::get('/taproom/{id}/edit', 'AdminController@editTap');
 
-    Route::delete('/taproom/{id}', 'AdminController@destroyTap');
+    Route::delete('/taproom/{id}', 'AdminController@destroyTap')->name('deleteTap');
+
 
     // Jobs routes
     Route::get('/jobs/create', 'AdminController@createJob');
@@ -60,14 +74,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 
     Route::get('/jobs/{id}/edit', 'AdminController@editJob');
 
-    Route::get('/jobs/{id}/delete', 'AdminController@destroyJob');
-
-
+    Route::delete('/jobs/{id}', 'AdminController@destroyJob');
 
 
     // Event routes
 
     Route::post('/events', 'AdminController@storeEvent')->name('events');
+
+    Route::post('/eventsnewsletter', 'AdminController@eventsnewsletter');
 
     Route::get('/events/create', 'AdminController@createEvent');
 
@@ -77,9 +91,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 
     Route::get('/events/{id}/edit', 'AdminController@editEvent');
 
-    Route::get('/events/{id}/delete', 'AdminController@destroyEvent');
-
-
+    Route::delete('/events/{id}', 'AdminController@destroyEvent');
 
 
 });

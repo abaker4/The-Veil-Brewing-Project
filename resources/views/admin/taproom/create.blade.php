@@ -85,6 +85,9 @@
                                     <button type="submit" class="btn btn-primary">
                                         Add
                                     </button>
+                                    <a class="btn btn-link" href="/admin/home">
+                                        <button type="button" class="btn btn-secondary">Cancel</button>
+                                    </a>
                                 </div>
                             </div>
                         </form>

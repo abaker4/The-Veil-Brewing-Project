@@ -33,6 +33,8 @@ class Welcome extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.welcome');
+
+        return $this->from('info@theveilbrewing.com')
+            ->view('emails.welcome');
     }
 }

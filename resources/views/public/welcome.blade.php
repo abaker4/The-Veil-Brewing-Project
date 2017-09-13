@@ -2,9 +2,6 @@
 
 @extends('layouts.master')
 
-<!-- Marketing messaging and featurettes
-================================================== -->
-<!-- Wrap the rest of the page in another container to center all the content. -->
 
 @section('content')
 <style>
@@ -26,7 +23,7 @@
 
     }
 
-    .arrow {
+    #arrow {
         float:left;
         position:relative;
         width: 0px;
@@ -37,7 +34,7 @@
         -webkit-transform:rotate(360deg)
     }
 
-    .arrow:after {
+    #arrow:after {
         content:'';
         position:absolute;
         top:-3.2em;
@@ -89,35 +86,38 @@
     }
 
 
+    div#line1 span#arrow {
+        display: inline;
+    }
 
+    div#line1:hover span#arrow {
+        display: none;
+    }
+
+    div#line1 span#scroll {
+        display: none;
+    }
+
+    div#line1:hover span#scroll {
+        display: inline;
+    }
 </style>
 
     <div class="parallax-logo pt-2" style="height: 100vh; background: transparent;">
 
-        <div class="container">
+        <div id="line1" class="container">
             <h1 class="display-1"></h1>
             <p class="lead"></p>
-         <a href=""  class="arrow-wrap">scroll down<span class="arrow"></span></a>
-            <p class="text"></p>
+            <a  onclick="$('#submit').animatescroll({scrollSpeed:2000,easing:'easeInQuad'});" class="arrow-wrap"><span id="arrow"></span><span id="scroll">Scroll Down</span></a>
         </div>
     </div>
-
-
-    <div  class="parallax-pour pt-2" style="height: 100vh;background: transparent;">
-        <div  class="container">
-            <h1 class="display-1"></h1>
-            <p class="lead"></p>
-        </div>
-    </div>
-
 
 <!-- START THE FEATURETTES -->
-
+<div id="submit"></div>
 <hr class="featurette-divider">
-
-<div class="row featurette">
+<div  class="row featurette">
     <div class="container">
-        <div class="col-md-10">
+        <div class="col-md-10" style="height: 50vh;">
             <h2 class="featurette-heading">Welcome to <span class="text-muted">The Veil Brewing Co.</span></h2>
             <p class="lead"> We are a craft brewery located in the Scott's Addition neighborhood of Richmond, Virginia. We focus on hop forward beers, high gravity and barrel aging, lagers, wild ales, and spontaneous fermentation. We are dedicated to quality and strive to provide a unique experience through our beers and our tasting room.
 
@@ -130,6 +130,12 @@
 <hr class="featurette-divider">
 
 
+<div  class="parallax-pour pt-2" style="height: 100vh;background: transparent;">
+    <div  class="container">
+        <h1 class="display-1"></h1>
+        <p class="lead"></p>
+    </div>
+</div>
 
 
 
@@ -144,16 +150,18 @@
 
 
 
+<hr class="featurette-divider">
+<div class="row featurette">
+    <div class="col-md-12 justify-content-center" style="height: 60vh;">
+        <div class="container">
+            <h4 class="featurette-heading text-center"><span class="text-muted">ABOUT THE VEIL</span></h4>
+            <p class="lead text-center"> The Veil Brewing Co. was founded by Dustin Durrance and Matt Tarpey in 2016. We brew craft beers for draft consumption and cans in limited release. We believe local breweries play  an important role in their communities which is why, the neighborhood of Scott's Addition was such a good fit for The Veil. Our tap room is open to the public and we also offer tours of our brewery (by appointment).</p>
 
-<div class="container marketing">
-
-    <div class="row featurette">
-        <div class="col-md-7 push-md-5">
-        </div><!-- /.container -->
-        <hr class="featurette-divider">
+            <p class="lead text-center">Find The Veil on <a href="https://www.beeradvocate.com/search/?q=the+veil&qt=beer" target="_blank"><u>Beer Advocate</u></a> and <a href="https://www.ratebeer.com/brewers/the-veil-brewing-company/26864/" target="_blank"><u>Rate Beer</u></a></p>
+        </div>
     </div>
 </div>
-
+<hr class="featurette-divider">
 
         <div class="parallax-interior" style="height: 100vh;background: transparent;">
 
@@ -166,25 +174,6 @@
 
 
 
-            <hr class="featurette-divider">
-
-        <div class="row featurette">
-            <div class="col-md-12 text-center">
-                <h4 class="featurette-heading text-center"><span class="text-muted">ABOUT THE VEIL</span></h4>
-                <p class="lead text-center"> The Veil Brewing Co. was founded by Dustin Durrance and Matt Tarpey in 2016. We brew craft beers for draft consumption and cans in limited release. We believe local breweries play an important role in their communities which is why, the neighborhood of Scott's Addition was such a good fit for The Veil. Our tap room is open to the public and we also offer tours of our brewery (by appointment).
-
-                    Find The Veil on <a href="https://www.beeradvocate.com/search/?q=the+veil&qt=beer"><u>Beer Advocate</u></a> and <a href="https://www.ratebeer.com/brewers/the-veil-brewing-company/26864/"><u>Rate Beer</u></a></p>
-            </div>
-        </div>
-
-
-
-
-            <hr class="featurette-divider">
-
-        </div> <!--End Container Marketing-->
-
-        <!-- /END THE FEATURETTES -->
 
         <div class="parallax-fermenter" style="height: 100vh;background: transparent;">
 
@@ -201,13 +190,15 @@
             <hr class="featurette-divider">
 
 
-            <div class="container marketing">
+            <div class="container marketing pt-3">
                 <div class="row featurette">
                     <div class="col-md-7">
-                        <h2 class="featurette-heading">We Know Beer</h2>
-                            <p class="lead">At The Veil no two beers are alike because we aim to push the limits with each and every brew. We constantly are innovating to keep your taste buds guessing, so the only the way to truly find out is to check us out and <a href="/taproom"><u>see whats on tap!</u></a></p>
+                        <h2 class="featurette-heading pb-3">We Push The Limits</h2>
+                            <p class="lead pb-3" style="height: 25vh;">At The Veil no two beers are alike because we aim to re-invent with each and every brew. We constantly are innovating to keep your taste buds guessing, so the only the way to find out is to <a href="/taproom"><u>see whats on tap!</u></a></p>
+                        </div>
 
-                    </div>
+
+
                     <div class="col-md-5">
                         <img class="featurette-image img-fluid mx-auto" src="/img/veil/glass.jpeg" alt="Generic placeholder image">
                     </div>
@@ -220,7 +211,7 @@
 
 
 
-        <div class="parallax-sign" data-parallax="scroll" data-image-src="/public/img/veil/sign.jpeg" style="height: 100vh;background: transparent;">
+        <div class="parallax-sign" style="height: 100vh;background: transparent;">
 
             <div class="container">
 
@@ -230,21 +221,12 @@
         </div>
 
 
-        <div class="container marketing">
-            <hr class="featurette-divider">
 
-
-            <div class="row featurette">
-                <div class="col-md-7">
-                </div>
-            </div>
-
-            <hr class="featurette-divider">
 
         </div> <!--End Container Marketing-->
 
 
-        <hr class="featurette-divider">
+        {{--<hr class="featurette-divider">--}}
 
 
         <div class="parallax-exterior" style="height: 100vh;background: transparent;">
@@ -268,10 +250,6 @@
 
 
 
-<script>
-
-
-</script>
 
 @endsection
 

@@ -1,11 +1,12 @@
 
 
 
+
 <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <a id="home" class="navbar-brand" href="/">[ The Veil ]</a>
+    <a id="home" class="navbar-brand" href="/home">[ The Veil ]</a>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="nav-bar nav" >
             <li id="taproom" class="nav-item">
@@ -23,5 +24,3 @@
         </ul>
     </div>
 </nav>
-
-

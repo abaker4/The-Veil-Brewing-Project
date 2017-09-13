@@ -64,6 +64,16 @@ display: table-cell;
 
 
 
+ #flash-message{
+
+     position:absolute;
+     z-index: 10;
+     top: 20px;
+     right: 20px;
+ }
+
+
+
 
 /* GLOBAL STYLES
 -------------------------------------------------- */

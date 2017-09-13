@@ -17,7 +17,7 @@ class CreateTaproomTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('type');
-            $table->decimal('ABV', 11, 2);
+            $table->decimal('ABV', 11, 1);
             $table->decimal('small', 11, 2);
             $table->decimal('large', 11, 2);
             $table->timestamps();

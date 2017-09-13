@@ -10,12 +10,14 @@
                     <div class="panel-body">
                         <form class="form-horizontal" role="form" method="POST" action="/admin/events"}>
                             {{ csrf_field() }}
+
                             <input type="hidden" value="{{$events->id}}" name="id">
+
                             <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                                 <label for="title" class="col-md-4 control-label">Title</label>
 
                                 <div class="col-md-6">
-                                    <input id="title" type="text" class="form-control" name="title" value="{{$events->title}}" required autofocus>
+                                    <input id="title" type="text" class="form-control" name="title" value="{{$events->title}}"  autofocus>
 
                                     @if ($errors->has('title'))
                                         <span class="help-block">
@@ -39,6 +41,36 @@
                                     @endif
                                 </div>
                             </div>
+
+                            <div class="form-group{{ $errors->has('start') ? ' has-error' : '' }}">
+                                <label for="start" class="col-md-4 control-label">Start Time</label>
+
+                                <div class="col-md-6">
+                                    <input id="start" type="text" class="form-control" name="start" value="{{$events->start->toDayDateTimeString()}}" autofocus>
+
+                                    @if ($errors->has('start'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('start') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                                <div class="form-group{{ $errors->has('end') ? ' has-error' : '' }}">
+                                    <label for="end" class="col-md-4 control-label">End Time</label>
+
+                                    <div class="col-md-6">
+                                        <input id="end" type="text" class="form-control" name="end" value="{{$events->end->toDayDateTimeString()}}"  autofocus>
+
+                                        @if ($errors->has('end'))
+                                            <span class="help-block">
+                                        <strong>{{ $errors->first('end') }}</strong>
+                                    </span>
+                                        @endif
+                                    </div>
+                                </div>
+
+
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">
