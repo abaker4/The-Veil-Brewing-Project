@@ -8,7 +8,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Edit Event</div>
                     <div class="panel-body">
-                        <form class="form-horizontal" role="form" method="POST" action="/admin/events"}>
+                        <form class="form-horizontal" role="form" method="POST" action="/admin/storeevent"}>
                             {{ csrf_field() }}
 
                             <input type="hidden" value="{{$events->id}}" name="id">

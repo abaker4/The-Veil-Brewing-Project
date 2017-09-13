@@ -48,7 +48,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::post('/generalnewsletter', 'AdminController@generalnewsletter');
 
     // Taproom routes
-    Route::post('/taproom', 'AdminController@storeTap')->name('taproom');
+    Route::post('/storetap', 'AdminController@storeTap')->name('taproom');
 
     Route::post('/newtap', 'AdminController@newTap');
 
@@ -68,19 +68,20 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     Route::post('/newjob', 'AdminController@newJob');
 
+    Route::get('/jobs/{id}/create', 'AdminController@editJob');
+
     Route::delete('/jobs/{id}', 'AdminController@destroyJob');
 
 
     // Event routes
 
-    Route::post('/events', 'AdminController@storeEvent')->name('events');
+    Route::post('/storeevent', 'AdminController@storeEvent')->name('events');
 
     Route::post('/eventsnewsletter', 'AdminController@eventsnewsletter');
 
     Route::get('/events/create', 'AdminController@createEvent');
 
     Route::post('/newevent', 'AdminController@newEvent');
-
 
     Route::get('/events/{id}/edit', 'AdminController@editEvent');
 
