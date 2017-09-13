@@ -34,11 +34,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/home') }}">
-<<<<<<< HEAD
                         [ The Veil ]
-=======
-
->>>>>>> origin/master
                     </a>
                 </div>
 

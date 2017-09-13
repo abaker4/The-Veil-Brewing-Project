@@ -75,7 +75,6 @@
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
 
     {{--<script src="/js/app.js"></script>--}}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="/js.parallax.min.js"></script>
     <script src="/js/parallax.js"></script>
     <script src="/js/main.js"></script>
