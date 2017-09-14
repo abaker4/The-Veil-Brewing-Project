@@ -19,8 +19,8 @@
 
                                     @if ($errors->has('title'))
                                         <span class="help-block">
-                                        <strong>{{ $errors->first('title') }}</strong>
-                                    </span>
+                                          <strong>{{ $errors->first('title') }}</strong>
+                                        </span>
                                     @endif
                                 </div>
                             </div>
@@ -34,36 +34,36 @@
 
                                     @if ($errors->has('summary'))
                                         <span class="help-block">
-                                        <strong>{{ $errors->first('summary') }}</strong>
-                                    </span>
+                                            <strong>{{ $errors->first('summary') }}</strong>
+                                        </span>
                                     @endif
                                 </div>
                             </div>
 
                             <div class="form-group{{ $errors->has('q_description') ? ' has-error' : '' }}">
-                                <label for="title" class="col-md-4 control-label">Start Time</label>
+                                <label for="q_description" class="col-md-4 control-label">Description</label>
 
                                 <div class="col-md-6">
-                                    <input id="title" type="text" class="form-control" name="q_description" value="{{ old('q_description')}}"  autofocus>
+                                    <textarea class="form-control" id="exampleTextarea" name="q_description" rows="10"></textarea>
 
                                     @if ($errors->has('q_description'))
                                         <span class="help-block">
-                                        <strong>{{ $errors->first('q_description') }}</strong>
-                                    </span>
+                                             <strong>{{ $errors->first('q_description') }}</strong>
+                                        </span>
                                     @endif
                                 </div>
                             </div>
 
-                            <div class="form-group{{ $errors->has('responsibilities') ? ' has-error' : '' }}">
-                                <label for="title" class="col-md-4 control-label">Finish Time</label>
+                            <div class="form-group{{ $errors->has('resposibilities') ? ' has-error' : '' }}">
+                                <label for="responsibilities" class="col-md-4 control-label">Responsibilities</label>
 
                                 <div class="col-md-6">
-                                    <input id="title" type="text" class="form-control" name="responsibilities" value="{{ old('responsibilities')}}"  autofocus>
+                                    <textarea class="form-control" id="exampleTextarea" name="responsibilities" rows="10"></textarea>
 
                                     @if ($errors->has('responsibilities'))
                                         <span class="help-block">
-                                        <strong>{{ $errors->first('responsibilities') }}</strong>
-                                    </span>
+                                            <strong>{{ $errors->first('responsibilities') }}</strong>
+                                        </span>
                                     @endif
                                 </div>
                             </div>

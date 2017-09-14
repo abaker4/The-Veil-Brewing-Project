@@ -9,7 +9,7 @@
         color: white;
         cursor: pointer;
         display: table;
-        height: 150px;
+        height: 100%;
         left: 0;
         position: absolute;
         top: 0;
@@ -21,15 +21,8 @@
         transition: opacity 500ms
     }
 
-    /*span.text-content span {*/
-        /*display: table-cell;*/
-        /*text-align: center;*/
-        /*vertical-align: middle;*/
-    /*}*/
 
-    /*show text on hover*/
-
-    .carousel-item .carousel-caption h1:hover{
+    .carousel-item img .carousel-caption h1:hover{
         opacity: 1;
     }
 </style>
@@ -85,4 +78,4 @@
 <p>Click on an image below to check out our online shop where you can purchase tees, glassware, & more! Please email webstore@theveilbrewing.com with any questions about online orders.  All orders are generally processed in 1 business day and shipped via 2-3 day Priority Mail by USPS.</p>
 
 
-    @endsection
+@endsection

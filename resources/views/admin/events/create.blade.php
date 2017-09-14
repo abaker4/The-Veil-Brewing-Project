@@ -44,7 +44,7 @@
                                 <label for="title" class="col-md-4 control-label">Start Time</label>
 
                                 <div class="col-md-6">
-                                    <input id="title" type="text" class="form-control" name="start" value="{{ old('start')}}"  autofocus>
+                                    <input id="title" type="text" class="form-control" name="start" placeholder="(ex. 2017-09-14 14:09:00)" value="{{ old('start')}}"  autofocus>
 
                                     @if ($errors->has('start'))
                                         <span class="help-block">
@@ -58,7 +58,7 @@
                                 <label for="title" class="col-md-4 control-label">Finish Time</label>
 
                                 <div class="col-md-6">
-                                    <input id="title" type="text" class="form-control" name="end" value="{{ old('end')}}"  autofocus>
+                                    <input id="title" type="text" class="form-control" name="end" value="{{ old('end')}}"  placeholder="(ex. 2017-09-14 14:09:00)"  autofocus>
 
                                     @if ($errors->has('end'))
                                         <span class="help-block">
