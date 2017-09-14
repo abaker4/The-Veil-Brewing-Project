@@ -46,8 +46,8 @@
                                 <label for="start" class="col-md-4 control-label">Start Time</label>
 
                                 <div class="col-md-6">
-                                    <input id="start" type="text" class="form-control" name="start" value="{{$events->start->toDayDateTimeString()}}" autofocus>
-
+                                    <input id="start" type="text" class="form-control" name="start" value="{{$events->start}}" autofocus>
+                                                                                                     {{--->toDayDateTimeString()--}}
                                     @if ($errors->has('start'))
                                         <span class="help-block">
                                             <strong>{{ $errors->first('start') }}</strong>
@@ -60,7 +60,7 @@
                                     <label for="end" class="col-md-4 control-label">End Time</label>
 
                                     <div class="col-md-6">
-                                        <input id="end" type="text" class="form-control" name="end" value="{{$events->end->toDayDateTimeString()}}"  autofocus>
+                                        <input id="end" type="text" class="form-control" name="end" value="{{$events->end}}"  autofocus>
 
                                         @if ($errors->has('end'))
                                             <span class="help-block">

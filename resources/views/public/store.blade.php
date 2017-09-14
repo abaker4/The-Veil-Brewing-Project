@@ -1,32 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-<style>
-
-    /*place the text over the images*/
-    .carousel-caption h1 {
-        background: rgba(0,0,0,0.5);
-        color: white;
-        cursor: pointer;
-        display: table;
-        height: 100%;
-        left: 0;
-        position: absolute;
-        top: 0;
-        width: 150px;
-        opacity: 0;
-        -webkit-transition: opacity 500ms;
-        -moz-transition: opacity 500ms;
-        -o-transition: opacity 500ms;
-        transition: opacity 500ms
-    }
-
-
-    .carousel-item img .carousel-caption h1:hover{
-        opacity: 1;
-    }
-</style>
-
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>

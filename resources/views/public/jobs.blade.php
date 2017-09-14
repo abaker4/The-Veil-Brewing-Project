@@ -32,7 +32,7 @@
         </div>
         <div class="card">
             <div class="card-block" style="color:black; ">
-                <p>Summary</p>
+                <p>Summary:</p>
                 {{$job->summary}}
             </div>
             <div class="card-block" style="color:black; ">
