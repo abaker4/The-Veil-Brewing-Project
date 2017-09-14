@@ -68,7 +68,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     Route::post('/newjob', 'AdminController@newJob');
 
-    Route::get('/jobs/{id}/edit', 'AdminController@editJob');
+    Route::get('/jobs/{id}', 'AdminController@editJob');
 
     Route::delete('/jobs/{id}', 'AdminController@destroyJob');
 
@@ -83,7 +83,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     Route::post('/newevent', 'AdminController@newEvent');
 
-    Route::get('/events/{id}/edit', 'AdminController@editEvent');
+    Route::get('/events/{id}', 'AdminController@editEvent');
 
     Route::delete('/events/{id}', 'AdminController@destroyEvent');
 
