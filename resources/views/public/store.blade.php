@@ -1,7 +1,38 @@
 @extends('layouts.master')
 
 @section('content')
+<style>
 
+    /*place the text over the images*/
+    .carousel-caption h1 {
+        background: rgba(0,0,0,0.5);
+        color: white;
+        cursor: pointer;
+        display: table;
+        height: 150px;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 150px;
+        opacity: 0;
+        -webkit-transition: opacity 500ms;
+        -moz-transition: opacity 500ms;
+        -o-transition: opacity 500ms;
+        transition: opacity 500ms
+    }
+
+    /*span.text-content span {*/
+        /*display: table-cell;*/
+        /*text-align: center;*/
+        /*vertical-align: middle;*/
+    /*}*/
+
+    /*show text on hover*/
+
+    .carousel-item .carousel-caption h1:hover{
+        opacity: 1;
+    }
+</style>
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -11,32 +42,32 @@
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
-           <a href="http://theveilbrewing.bigcartel.com/products" target=_blank><img class="first-slide" src="/img/veil/longsleeve.png" alt="long sleeve"></a>
+           <a href="http://theveilbrewing.bigcartel.com/product/veil-logo-baseball-shirt" target=_blank><img class="first-slide" src="/img/veil/longsleeve.png" alt="long sleeve"></a>
             <div class="container">
                 <div class="carousel-caption d-none d-md-block text-left">
-                    <h1></h1>
-                    <p>Check out Men's and Women's clothing available in all sizes</p>
-                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Check it out</a></p>
+                    <h1>Check out Men's and Women's clothing available in all sizes</h1>
+                    <h2></h2>
+                    <p><a class="btn btn-lg btn-primary" href="http://theveilbrewing.bigcartel.com/products" role="button">Check it out</a></p>
                 </div>
             </div>
         </div>
         <div class="carousel-item">
-            <a href="http://theveilbrewing.bigcartel.com/products" target=_blank><img class="second-slide" src="/img/veil/hoodie.png" alt="hoodie"></a>
+            <a href="http://theveilbrewing.bigcartel.com/product/logo-zip-up-hoodie-unisex" target=_blank><img class="second-slide" src="/img/veil/hoodie.png" alt="hoodie"></a>
             <div class="container">
                 <div class="carousel-caption d-none d-md-block">
-                    <h1></h1>
-                    <p> Glassware, Accessories and Taproom Tasting Gift Cards</p>
-                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+                    <h1>Glassware, Accessories and Taproom Tasting Gift Cards</h1>
+                    <p></p>
+                    <p><a class="btn btn-lg btn-primary" href="http://theveilbrewing.bigcartel.com/products" role="button">Learn more</a></p>
                 </div>
             </div>
         </div>
         <div class="carousel-item">
-            <a href="http://theveilbrewing.bigcartel.com/products" target=_blank><img class="third-slide" src="/img/veil/shirt.png" alt="Third slide"></a>
+            <a href="http://theveilbrewing.bigcartel.com/product/stacked-text-logo-tee" target=_blank><img class="third-slide" src="/img/veil/shirt.png" alt="Third slide"></a>
             <div class="container">
                 <div class="carousel-caption d-none d-md-block text-right">
-                    <h1></h1>
-                    <p>Check out our latest inventory and Veil merchandise</p>
-                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse</a></p>
+                    <h1>Check out our latest inventory and Veil merchandise</h1>
+                    <p></p>
+                    <p><a class="btn btn-lg btn-primary" href="http://theveilbrewing.bigcartel.com/products" role="button">Browse</a></p>
                 </div>
             </div>
         </div>
