@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/', 'PublicController@agefilter');
+Route::get('/', 'PublicController@ageFilter');
 
 Route::get('/home', 'PublicController@index');
 
@@ -45,14 +45,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     Route::get('/home', 'AdminController@index')->name('home');
 
-    Route::post('/generalnewsletter', 'AdminController@generalnewsletter');
+    Route::post('/generalnewsletter', 'AdminController@generalNewsletter');
 
     // Taproom routes
     Route::post('/storetap', 'AdminController@storeTap')->name('taproom');
 
     Route::post('/newtap', 'AdminController@newTap');
 
-    Route::post('/tapnewsletter', 'AdminController@tapnewsletter');
+    Route::post('/tapnewsletter', 'AdminController@tapNewsletter');
 
     Route::get('/taproom/create', 'AdminController@createTap');
 
@@ -61,7 +61,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::delete('/taproom/{id}', 'AdminController@destroyTap')->name('deleteTap');
 
 
-    // jobs routes
+    // Jobs routes
     Route::get('/jobs/create', 'AdminController@createJob');
 
     Route::post('/storejob', 'AdminController@storeJob')->name('jobs');
@@ -77,7 +77,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     Route::post('/storeevent', 'AdminController@storeEvent')->name('events');
 
-    Route::post('/eventsnewsletter', 'AdminController@eventsnewsletter');
+    Route::post('/eventsnewsletter', 'AdminController@eventsNewsletter');
 
     Route::get('/events/create', 'AdminController@createEvent');
 

@@ -20,8 +20,6 @@ class AdminController extends Controller
 {
     /**
      * Create a new controller instance.
-     *
-     * @return void
      */
     public function __construct()
     {
@@ -36,20 +34,20 @@ class AdminController extends Controller
      */
     public function index()
     {
-
         $taps = Taproom::all();
         $events = Events::all();
         $jobs = Jobs::all();
         $contacts = Contact::all();
 
         return view('admin.index', compact('taps', 'events', 'jobs', 'contacts'));
-
-
     }
 
-    public function generalnewsletter()
-    {
 
+    /**
+     * @return string
+     */
+    public function generalNewsletter()
+    {
         $general_newsletter_contacts =
             DB::table('contact_newsletters')
                 ->join('contacts', 'contact_newsletters.contact_id', '=', 'contacts.id')
@@ -59,7 +57,7 @@ class AdminController extends Controller
                 ->get();
 
 
-        // loop through all contacts on newsletter and send
+        // loop through all contacts on newsletter and send email
         foreach ($general_newsletter_contacts as $contact) {
 
             \Mail::to($contact->email)->send(new generalnewsletter());
@@ -71,35 +69,26 @@ class AdminController extends Controller
 
 
 
+    // TAPS
 
-// Taps //
-
-    public function showTap()
-    {
-
-        return view('admin.taproom.detail');
-    }
-
-
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function createTap()
     {
-
-
         return view('admin.taproom.create');
-
 
     }
 
-
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function editTap($id)
     {
-
         $tap = Taproom::find($id);
 
-
         return view('admin.taproom.edit', compact('tap'));
-
-
     }
 
 
@@ -110,7 +99,7 @@ class AdminController extends Controller
      */
     public function storeTap(Request $request)
     {
-
+        //form validation
         $this->validate($request, [
 
             'title' => 'required',
@@ -126,28 +115,30 @@ class AdminController extends Controller
         ]);
 
         $data = $request->all();
-
+        //instantiate a new taproom object and look for the data-id
         $tap = Taproom::find($data['id']);
 
+        //handling form input
         $tap->title = $data['title'];
         $tap->type = $data['type'];
         $tap->ABV = $data['ABV'];
         $tap->small = $data['small'];
         $tap->large = $data['large'];
-
         $tap->save();
 
+        //flash success message
         session()->flash('message', 'Your new brew has now been added');
 
         return redirect('/admin/home');
-
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function newTap(Request $request)
     {
-
         //form validation
-
         $this->validate(request(), [
 
             'title' => 'required',
@@ -161,45 +152,43 @@ class AdminController extends Controller
             'large' => 'required',
         ]);
 
-
-
         $data = $request->all();
 
-        //create a new tap using the request data
+        //instantiate a new taproom object
         $tap = new Taproom();
 
+        //handling form input
         $tap->title = $data['title'];
         $tap->type = $data['type'];
         $tap->ABV = $data['ABV'];
         $tap->small = $data['small'];
         $tap->large = $data['large'];
-
-        //Save it to the database
         $tap->save();
 
-
+        //flash success message
         session()->flash('message', 'Your new brew has now been added');
 
-        // return to the home page
         return redirect('admin/home');
-
     }
 
 
+    /**
+     * @param $id
+     * @return string
+     */
     public function destroyTap($id)
     {
-
-
         $tap = Taproom::find($id);
         $tap->delete();
-
 
         return "success";
     }
 
-    public function tapnewsletter()
+    /**
+     * @return string
+     */
+    public function tapNewsletter()
     {
-
         $taproom_newsletter_contacts =
             DB::table('contact_newsletters')
                 ->join('contacts', 'contact_newsletters.contact_id', '=', 'contacts.id')
@@ -208,22 +197,20 @@ class AdminController extends Controller
                 ->where('newsletters.id', '=', 1)
                 ->get();
 
-
-
         // loop through all contacts on newsletter and send
         foreach ($taproom_newsletter_contacts as $contact) {
             \Mail::to($contact->email)->send(new tapnewsletter());
         }
 
         return 'Your mail blast is underway';
-
-
     }
 
 
-    // JOBS //
+    // JOBS
 
-
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function createJob()
     {
 
@@ -231,21 +218,26 @@ class AdminController extends Controller
     }
 
 
-
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function editJob($id)
     {
 
         $jobs = Jobs::find($id);
 
-
         return view('admin.jobs.edit', compact('jobs'));
 
     }
 
-
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function storeJob(Request $request)
     {
-
+        //form validation
         $this->validate(request(), [
 
             'title' => 'required',
@@ -260,29 +252,29 @@ class AdminController extends Controller
 
 
         $data = $request->all();
-
+        //instantiate a new jobs object looking for the data-id
         $job = Jobs::find($data['id']);
 
+        //handling form input
         $job->title = $data['title'];
         $job->summary = $data['summary'];
         $job->q_description = $data['q_description'];
         $job->responsibilities = $data['responsibilities'];
-
         $job->save();
 
-        session()->flash('message', 'Your new brew has now been added');
+        //flash successs message
+        session()->flash('message', 'Thanks for Posting That Job! Team Work Makes the Dream Work!');
 
 
         return redirect('/admin/home');
-
     }
 
+    /**
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function newJob()
-
     {
-
         //form validation
-
         $this->validate(request(), [
 
             'title' => 'required',
@@ -294,30 +286,29 @@ class AdminController extends Controller
             'responsibilities' => 'required',
         ]);
 
-        //create a new job using the request data
+        //instantiate a new jobs object
         $job = new Jobs;
 
+        //handling form input
         $job->title = request('title');
         $job->summary = request('summary');
         $job->q_description = request('q_description');
         $job->responsibilities = request('responsibilities');
-
-
-        //Save it to the database
         $job->save();
 
+        // flash success message
         session()->flash('message', 'Thanks for Posting That Job! Team Work Makes the Dream Work!');
 
-        // return to the home page
-        return redirect('/admin/home');
 
+        return redirect('/admin/home');
     }
 
-
+    /**
+     * @param $id
+     * @return string
+     */
     public function destroyJob($id)
     {
-
-
         $job = Jobs::find($id);
         $job->delete();
 
@@ -326,39 +317,37 @@ class AdminController extends Controller
 
 
 
-    // Events //
+    // EVENTS
 
-
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function createEvent()
     {
-
         $events = Events::all();
-
 
         return view('admin.events.create', compact('events'));
     }
 
-
-    public function showEvent()
-    {
-
-        return view('admin.events.detail');
-    }
-
-
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function editEvent($id)
     {
-
         $events = Events::find($id);
 
         return view('admin.events.edit', compact('events'));
-
     }
 
-
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function storeEvent(Request $request)
     {
 
+        //form validation
         $this->validate(request(), [
 
             'title' => 'required',
@@ -372,29 +361,30 @@ class AdminController extends Controller
 
         $data = $request->all();
 
-
+        //instantiate a new events object looking for the data-id
         $event = Events::find($data['id']);
 
+        //handling form input
         $event->title = $data['title'];
         $event->body = $data['body'];
         $event->start = $data['start'];
         $event->end = $data['end'];
-
-
         $event->save();
 
+        //flash success message
         session()->flash('message', 'Your new event has now been added');
-
 
         return redirect('/admin/home');
 
     }
 
+    /**
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function newEvent()
-
     {
-        //form validation
 
+        //form validation
         $this->validate(request(), [
 
             'title' => 'required',
@@ -405,43 +395,41 @@ class AdminController extends Controller
 
             'end' => 'required'
 
-
         ]);
 
-        //create a new job using the request data
+        //instantiate a new events object
         $event = new Events;
 
+        //handling form input
         $event->title = request('title');
         $event->body = request('body');
         $event->start = request('start');
         $event->end = request('end');
-
-        //Save it to the database
         $event->save();
 
-        session()->flash('message', 'You Posted an Event, Its going to be Lit!');
+        //flash success message
+        session()->flash('message', 'Your new event has now been added!');
 
-
-        // return to the home page
         return redirect('/admin/home');
-
     }
 
-
+    /**
+     * @param $id
+     * @return string
+     */
     public function destroyEvent($id)
-
     {
-
         $event = Events::find($id);
         $event->delete();
 
         return "success";
     }
 
-
-    public function eventsnewsletter()
+    /**
+     * @return string
+     */
+    public function eventsNewsletter()
     {
-
         $events_newsletter_contacts =
             DB::table('contact_newsletters')
                 ->join('contacts', 'contact_newsletters.contact_id', '=', 'contacts.id')
@@ -450,20 +438,13 @@ class AdminController extends Controller
                 ->where('newsletters.id', '=', 2)
                 ->get();
 
-
-
         // loop through all contacts on newsletter and send
         foreach ($events_newsletter_contacts as $contact) {
 
             \Mail::to($contact->email)->send(new eventsnewsletter());
 
         }
-
-
-
         return  'Your Message Blast is Underway!';
-
-
     }
 
 }

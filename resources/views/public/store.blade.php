@@ -14,7 +14,7 @@
                 <div class="carousel-caption d-none d-md-block text-left">
                     <h1>Check out Men's and Women's clothing available in all sizes</h1>
                     <h2></h2>
-                    <p><a class="btn btn-lg btn-primary" href="http://theveilbrewing.bigcartel.com/products" role="button">Check it out</a></p>
+                    <p><a class="btn btn-lg btn-primary" href="http://theveilbrewing.bigcartel.com/products" role="button" target=_blank>Check it out</a></p>
                 </div>
             </div>
         </div>
@@ -24,7 +24,7 @@
                 <div class="carousel-caption d-none d-md-block">
                     <h1>Glassware, Accessories and Taproom Tasting Gift Cards</h1>
                     <p></p>
-                    <p><a class="btn btn-lg btn-primary" href="http://theveilbrewing.bigcartel.com/products" role="button">Learn more</a></p>
+                    <p><a class="btn btn-lg btn-primary" href="http://theveilbrewing.bigcartel.com/products" role="button" target=_blank>Learn more</a></p>
                 </div>
             </div>
         </div>
@@ -34,7 +34,7 @@
                 <div class="carousel-caption d-none d-md-block text-right">
                     <h1>Check out our latest inventory and Veil merchandise</h1>
                     <p></p>
-                    <p><a class="btn btn-lg btn-primary" href="http://theveilbrewing.bigcartel.com/products" role="button">Browse</a></p>
+                    <p><a class="btn btn-lg btn-primary" href="http://theveilbrewing.bigcartel.com/products" role="button" target=_blank>Browse</a></p>
                 </div>
             </div>
         </div>
