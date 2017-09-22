@@ -26,7 +26,6 @@ class PublicController extends Controller
     public function ageFilter()
     {
         return view('public.agefilter');
-
     }
 
     /**
@@ -34,7 +33,6 @@ class PublicController extends Controller
      */
     public function index()
     {
-
         return view('public.welcome');
     }
 
@@ -115,6 +113,9 @@ class PublicController extends Controller
 
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function events()
     {
         $events = Events::all();
@@ -122,15 +123,20 @@ class PublicController extends Controller
         return view('public.events', compact('events'));
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function jobs()
-
     {
         $jobs = Jobs::all();
 
         return view('public.jobs', compact('jobs'));
     }
 
-
+    /**
+     * @param Taproom $taproom
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function taproom(Taproom $taproom)
     {
 
@@ -140,8 +146,17 @@ class PublicController extends Controller
 
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function tapSignUp(Request $request)
     {
+        $this->validate(request(), [
+            'email' => 'required',
+            'newsletter_id' => 'required'
+        ]);
+
          $data = $request->all();
         //firstOrCreate method will attempt to locate a database record using the given column / value pairs.
         // If the model can not be found in the database, a record will be inserted with the given attributes.
@@ -177,10 +192,17 @@ class PublicController extends Controller
     }
 
 
-
-
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function eventSignUp(Request $request)
     {
+        $this->validate(request(), [
+            'email' => 'required',
+            'newsletter_id' => 'required'
+        ]);
+
         $data = $request->all();
 
         //firstOrCreate method will attempt to locate a database record using the given column / value pairs.

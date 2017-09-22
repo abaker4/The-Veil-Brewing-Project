@@ -1,8 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-
-
     <style>
 
         #flash-message {
@@ -10,14 +8,13 @@
             right: 10px;
             top: 60px;
         }
+
     </style>
     @if($flash = session('message'))
         <div id="flash-message" class="alert alert-success" role="alert">
             {{ $flash }}
         </div>
     @endif
-
-
     <div class="jumbotron mx-auto" style="background: url('/img/veil/cans.jpg'); font-family: 'Shadows Into Light', cursive; height: 50vh;">
         <h1 class="display-4 text-center mt-4 "><em>Job Postings</em></h1>
         <p class="lead text-center"></p>
@@ -46,23 +43,5 @@
         </div>
         <hr>
     @endforeach
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     @endsection

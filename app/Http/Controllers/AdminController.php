@@ -103,18 +103,15 @@ class AdminController extends Controller
         $this->validate($request, [
 
             'title' => 'required',
-
             'type' => 'required',
-
             'ABV' => 'required',
-
             'small' => 'required',
-
             'large' => 'required',
 
         ]);
 
         $data = $request->all();
+
         //instantiate a new taproom object and look for the data-id
         $tap = Taproom::find($data['id']);
 
@@ -142,13 +139,9 @@ class AdminController extends Controller
         $this->validate(request(), [
 
             'title' => 'required',
-
             'type' => 'required',
-
             'ABV' => 'required',
-
             'small' => 'required',
-
             'large' => 'required',
         ]);
 
@@ -241,11 +234,8 @@ class AdminController extends Controller
         $this->validate(request(), [
 
             'title' => 'required',
-
             'summary' => 'required',
-
             'q_description' => 'required',
-
             'responsibilities' => 'required'
 
         ]);
@@ -278,11 +268,8 @@ class AdminController extends Controller
         $this->validate(request(), [
 
             'title' => 'required',
-
             'summary' => 'required',
-
             'q_description' => 'required',
-
             'responsibilities' => 'required',
         ]);
 
@@ -351,11 +338,8 @@ class AdminController extends Controller
         $this->validate(request(), [
 
             'title' => 'required',
-
             'body' => 'required',
-
             'start' => 'required',
-
             'end' => 'required'
         ]);
 
@@ -388,11 +372,8 @@ class AdminController extends Controller
         $this->validate(request(), [
 
             'title' => 'required',
-
             'body' => 'required',
-
             'start' => 'required',
-
             'end' => 'required'
 
         ]);

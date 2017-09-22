@@ -2,8 +2,6 @@
 
 
 @section('content')
-
-
     <style>
 
         #flash-message {
@@ -11,13 +9,14 @@
             right: 10px;
             top: 60px;
         }
+
     </style>
+
     @if($flash = session('message'))
         <div id="flash-message" class="alert alert-success" role="alert">
             {{ $flash }}
         </div>
     @endif
-
 
     <div class="jumbotron mx-auto" style="background: url('/img/veil/casks.jpeg'); font-family: 'Shadows Into Light', cursive; height: 50vh;">
         <h1 class="display-4 text-center mt-4 "><em>Special Events</em></h1>
@@ -29,7 +28,6 @@
             <div class="container mx-2">
                 <div class="row">
                     <div class="col-lg-4 mx-3">
-
                     </div>
                     <div class="col-lg-4 justfy-content-center">
                         <div class="input-group">
@@ -59,8 +57,6 @@
             {{$event->body}}
         </div>
     </div>
-<hr>
+
     @endforeach
-
-
-    @endsection
+@endsection

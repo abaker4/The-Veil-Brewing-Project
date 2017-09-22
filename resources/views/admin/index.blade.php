@@ -7,7 +7,6 @@
             <h1 class="display-1">Tap List</h1>
         </div>
     </div>
-
     @if($flash = session('message'))
         <div id="flash-message" class="alert alert-success" role="alert">
             {{ $flash }}
@@ -51,8 +50,6 @@
             Send Taproom Newsletter
         </button>
     </div>
-    <hr>
-
 {{--End Taproom Section--}}
 
     <div class="jumbotron jumbotron-fluid pt-5">
@@ -95,7 +92,6 @@
             <button type="button" class="btn btn-success">Post Job</button>
         </a>
     </div>
-    <hr>
 {{--End Job Posting Section--}}
     <div class="jumbotron jumbotron-fluid pt-5">
         <div class="container">
@@ -143,7 +139,6 @@
             Send Events Newsletter
         </button>
     </div>
-    <hr>
     {{--End Events Section--}}
 
     {{--Customer Messages--}}
@@ -175,7 +170,7 @@
                         <td>{{$contact->email}}</td>
                         <td>{{$contact->subject}}</td>
                         <td>{{$contact->message}}</td>
-                        <td>{{$contact->created_at}}</td>
+                        <td>{{$contact->created_at->toDayDateTimeString()}}</td>
                     </tr>
                 </tbody>
             @endforeach
@@ -184,7 +179,6 @@
             Send General Newsletter
         </button>
     </div>
-    <hr>
     {{--End Customer Messages--}}
 
 <script>
@@ -320,11 +314,6 @@
 
     });
     </script>
-
-
-
-
-
 @endsection
 
 

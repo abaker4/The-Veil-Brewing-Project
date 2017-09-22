@@ -9,21 +9,11 @@
 </div>
     <hr class="featurette-divider">
     <!-- FOOTER -->
-
-
     <footer>
-
         <div class="container">
             <div class="row justify-content-md-center">
+                {{--google maps--}}
                 <div class="col col-lg-4">
-                    {{--@if (Route::has('login'))--}}
-                        {{--@if (Auth::check())--}}
-                            {{--<a class="nav-link" href="{{ url('/admin/home') }}">Home</a>--}}
-                        {{--@else--}}
-                            {{--<a class="nav-link" href="{{ url('/login') }}">Login</a>--}}
-                            {{--<a class="nav-link" href="{{ url('/register') }}"></a>--}}
-                        {{--@endif--}}
-                    {{--@endif--}}
                     <iframe
                             width="300"
                             height="300"
@@ -34,14 +24,11 @@
 
                 <div class="col col-lg-4">
                     <em class="text-muted">Resources</em>
-
-                  <div><a href="/jobs">Jobs</a></div>
+                    <div><a href="/jobs">Jobs</a></div>
                     <div><a href="https://www.beeradvocate.com/search/?q=the+veil&qt=beer" target="_blank">Beer Advocate</a></div>
                     <div><a href="https://www.ratebeer.com/brewers/the-veil-brewing-company/26864/" target="_blank">Rate Beer</a></div>
                     <div><a href="http://goodbeerhunting.com/blog/2016/8/13/a-return-to-the-old-dominion-the-veil-brewing-in-richmond-virginia?rq=the%20veil%20brewing%20co." target="_blank">Good Beer Hunting</a></div>
                 </div>
-
-
                 <div class="col col-lg-4">
                     <em class="text-muted">Info</em>
                     <br/>
@@ -59,13 +46,10 @@
                     <a href="https://www.instagram.com/theveilbrewing"><i class="fa fa-instagram fa-2x" aria-hidden="true" target="_blank"></i></a>
                     <a href="https://twitter.com/theveilbrewing"><i class="fa fa-twitter-square fa-2x" aria-hidden="true" target="_blank"   ></i></a>
                     <a href="https://www.facebook.com/theveilbrewing"><i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i></a>
-
                 </div>
              </div>
         </div>
-      </footer>
-
-
+    </footer>
     <!-- Bootstrap core JavaScript
        ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -86,42 +70,27 @@
             $(function(){
             $('.parallax-taproom').parallax({imageSrc: '/img/veil/taproom.jpeg'});
 
-
-
-
             $('.parallax-fermenter').parallax({imageSrc: '/img/veil/fermenters1.jpeg'});
-
-
 
             $('.parallax-interior').parallax({imageSrc: '/img/veil/interior.jpeg'});
 
-
-
             $('.parallax-sign').parallax({imageSrc: '/img/veil/sign.jpeg'});
-
 
             $('.parallax-video').parallax({imageSrc: "https://player.vimeo.com/video/203839498"});
 
-
             $('.parallax-logo').parallax({imageSrc: '/img/veil/logo.png'});
-
 
             $('.parallax-pour').parallax({imageSrc: '/img/veil/pour.jpeg'});
 
             $('.parallax-comarea').parallax({imageSrc: '/img/veil/comarea.jpeg'});
 
-
             $('.parallax-exterior').parallax({imageSrc: '/img/veil/exterior.jpeg'});
-
 
             $('.parallax-extsign').parallax({imageSrc: '/img/veil/extsign.jpeg'});
 
-
-
             $('.parallax-contact').parallax({imageSrc: '/img/veil/contact_logo.jpg'});
 
-
-        $('#flash-message').fadeOut(10000);
+            $('#flash-message').fadeOut(10000);
 
             });
 
@@ -316,10 +285,10 @@
 
         }(jQuery));
 
-</script>
+    </script>
 
-    </body>
-    </html>
+</body>
+</html>
 
 
 
