@@ -28,8 +28,7 @@ class AdminController extends Controller
 
 
     /**
-     * Show the application dashboard.
-     *
+     * Shows the admin tool dashboard.
      * @return \Illuminate\Http\Response
      */
     public function index()
@@ -44,6 +43,7 @@ class AdminController extends Controller
 
 
     /**
+     * Query that grabs all the emails and newsletter_id = 3, loops through them and sends a general newsletter.
      * @return string
      */
     public function generalNewsletter()
@@ -56,7 +56,6 @@ class AdminController extends Controller
                 ->where('newsletters.id', '=', 3)
                 ->get();
 
-
         // loop through all contacts on newsletter and send email
         foreach ($general_newsletter_contacts as $contact) {
 
@@ -67,11 +66,10 @@ class AdminController extends Controller
         return 'Your mail blast is underway';
     }
 
-
-
     // TAPS
 
     /**
+     * returns the create page for Taproom in the Admin Tool
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function createTap()
@@ -81,6 +79,7 @@ class AdminController extends Controller
     }
 
     /**
+     * returns the edit page for specific Taproom id
      * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -93,7 +92,7 @@ class AdminController extends Controller
 
 
     /**
-     *
+     * stores Taproom entry based on data input in edit view
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
@@ -130,6 +129,7 @@ class AdminController extends Controller
     }
 
     /**
+     * stores Taproom entry based on data input in create view
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
@@ -166,6 +166,7 @@ class AdminController extends Controller
 
 
     /**
+     * deletes taproom entry based on id
      * @param $id
      * @return string
      */
@@ -178,6 +179,7 @@ class AdminController extends Controller
     }
 
     /**
+     * Query that grabs all the emails and newsletter_id = 1, loops through them and sends a general newsletter.
      * @return string
      */
     public function tapNewsletter()
@@ -202,16 +204,17 @@ class AdminController extends Controller
     // JOBS
 
     /**
+     * returns the create view for Jobs
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function createJob()
     {
-
         return view('admin.jobs.create');
     }
 
 
     /**
+     * returns the edit view for specific Job id selected
      * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -225,6 +228,7 @@ class AdminController extends Controller
     }
 
     /**
+     * stores Job entry based on data input in edit view
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
@@ -260,6 +264,7 @@ class AdminController extends Controller
     }
 
     /**
+     * stores Job entry based on data input in create view
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function newJob()
@@ -291,6 +296,7 @@ class AdminController extends Controller
     }
 
     /**
+     * deletes Job entry based off of specific id selected
      * @param $id
      * @return string
      */
@@ -302,11 +308,10 @@ class AdminController extends Controller
         return "success";
     }
 
-
-
     // EVENTS
 
     /**
+     * returns the create view for Events
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function createEvent()
@@ -317,6 +322,7 @@ class AdminController extends Controller
     }
 
     /**
+     * returns the edit view for specific Event id selected
      * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -328,6 +334,7 @@ class AdminController extends Controller
     }
 
     /**
+     * stores Event entry based on data input in edit view
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
@@ -363,6 +370,7 @@ class AdminController extends Controller
     }
 
     /**
+     * stores Event entry based on data input in create view
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function newEvent()
@@ -395,6 +403,7 @@ class AdminController extends Controller
     }
 
     /**
+     * deletes Event based on id selected
      * @param $id
      * @return string
      */
@@ -407,6 +416,7 @@ class AdminController extends Controller
     }
 
     /**
+     * Query that grabs all the emails and newsletter_id = 2, loops through them and sends a general newsletter.
      * @return string
      */
     public function eventsNewsletter()

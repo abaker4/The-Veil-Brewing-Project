@@ -4,7 +4,7 @@
 use Illuminate\Support\Facades\Route;
 
 
-
+//Public Routes
 Route::get('/', 'PublicController@ageFilter');
 
 Route::get('/home', 'PublicController@index');
@@ -30,8 +30,7 @@ Route::post('/eventsignup', 'PublicController@eventSignUp');
 
 
 
-
-
+//Admin Routes
 Auth::routes();
 
 Route::get('/register', function () {
@@ -74,7 +73,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
 
     // Event routes
-
     Route::post('/storeevent', 'AdminController@storeEvent')->name('events');
 
     Route::post('/eventsnewsletter', 'AdminController@eventsNewsletter');

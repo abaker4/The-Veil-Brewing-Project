@@ -11,16 +11,15 @@ class User extends Authenticatable
 
     /**
      * The attributes that are mass assignable.
-     *
      * @var array
      */
     protected $fillable = [
         'name', 'email', 'password',
     ];
 
+
     /**
      * The attributes that should be hidden for arrays.
-     *
      * @var array
      */
     protected $hidden = [
@@ -28,33 +27,39 @@ class User extends Authenticatable
     ];
 
 
-
+    /**
+     * Creates new taproom entry
+     * @param Taproom $taproom
+     */
     public function publish(Taproom $taproom)
-
     {
-
         $this->taproom()->save($taproom);
-
     }
 
-
-
+    /**
+     * A User has many Events
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function events()
     {
         return $this->hasMany(Events::class);
-
     }
 
+    /**
+     * A User has many Taproom(Taps)
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function taproom()
     {
         return $this->hasMany(Taproom::class);
-
     }
 
-
+    /**
+     * A User has many Jobs
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function jobs()
     {
-
         return $this->hasMany(Jobs::class);
     }
 }

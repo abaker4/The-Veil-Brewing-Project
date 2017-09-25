@@ -19,7 +19,6 @@ class PublicController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
      * @return \Illuminate\Http\Response
      */
 
@@ -29,6 +28,7 @@ class PublicController extends Controller
     }
 
     /**
+     * returns the homepage view
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
@@ -37,6 +37,7 @@ class PublicController extends Controller
     }
 
     /**
+     * returns the store page view
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function store()
@@ -45,6 +46,7 @@ class PublicController extends Controller
     }
 
     /**
+     * returns the contact page view
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function contact()
@@ -54,6 +56,7 @@ class PublicController extends Controller
 
 
     /**
+     * creates a contact entry, if successful sends a welcome newsletter
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
@@ -114,6 +117,7 @@ class PublicController extends Controller
     }
 
     /**
+     * returns the event page view
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function events()
@@ -124,6 +128,7 @@ class PublicController extends Controller
     }
 
     /**
+     * returns the jobs page view
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function jobs()
@@ -134,6 +139,7 @@ class PublicController extends Controller
     }
 
     /**
+     * returns the taproom page view
      * @param Taproom $taproom
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -147,6 +153,7 @@ class PublicController extends Controller
     }
 
     /**
+     * creates an entry for taplist sign up, sends welcome message
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
@@ -193,6 +200,7 @@ class PublicController extends Controller
 
 
     /**
+     * creates an entry for the event sign up, sends welcome message
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
