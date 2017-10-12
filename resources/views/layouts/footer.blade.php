@@ -25,18 +25,18 @@
                 <div class="col col-lg-4">
                     <em class="text-muted">Resources</em>
                     <div><a href="/jobs">Jobs</a></div>
-                    <div><a href="https://www.beeradvocate.com/search/?q=the+veil&qt=beer" target="_blank">Beer Advocate</a></div>
-                    <div><a href="https://www.ratebeer.com/brewers/the-veil-brewing-company/26864/" target="_blank">Rate Beer</a></div>
-                    <div><a href="http://goodbeerhunting.com/blog/2016/8/13/a-return-to-the-old-dominion-the-veil-brewing-in-richmond-virginia?rq=the%20veil%20brewing%20co." target="_blank">Good Beer Hunting</a></div>
+                    <div><a href="https://www.beeradvocate.com/search/?q=the+veil&qt=beer" target="_blank" style="text-decoration: none;">Beer Advocate</a></div>
+                    <div><a href="https://www.ratebeer.com/brewers/the-veil-brewing-company/26864/" target="_blank" style="text-decoration: none;">Rate Beer</a></div>
+                    <div><a href="http://goodbeerhunting.com/blog/2016/8/13/a-return-to-the-old-dominion-the-veil-brewing-in-richmond-virginia?rq=the%20veil%20brewing%20co." target="_blank" style="text-decoration: none;">Good Beer Hunting</a></div>
                 </div>
                 <div class="col col-lg-4">
                     <em class="text-muted">Info</em>
                     <br/>
-                    <a href="mailto:info@theveilbrewing.com">info@theveilbrewing.com</a>
+                    <a href="mailto:info@theveilbrewing.com" style="text-decoration: none;">info@theveilbrewing.com</a>
                     <br/>
                     <em class="text-muted">Special Events</em>
                     <br/>
-                    <a href="mailto:events@theveilbrewing.com">events@theveilbrewing.com</a>
+                    <a href="mailto:events@theveilbrewing.com" style="text-decoration: none;">events@theveilbrewing.com</a>
                     <br/>
                     <div class="pt-2">
                         <em class="text-muted">Contact</em>
